@@ -5,6 +5,9 @@ ps/
 # Cache local
 local_cache/
 
+# Archivo renombrado a index.html — no trackear el original
+presentacion.html
+
 # Archivos de trabajo temporales (no referenciados en el HTML)
 1b40eaa6-55f9-4e18-b940-fe2e06dc4506.png
 643f503f-7b7c-4910-a5a8-8404e32873d7.png
