@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buitrago Sánchez — Design System</title>
+  <meta name="description" content="Consultoría Contable, Tributaria y Auditoría · Colombia" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+       ============================================================ */
+    :root {
+      /* Brand */
+      --color-primary: #c9a84c;
+      --color-primary-hover: #b8963d;
+      --color-primary-active: #a7852e;
+      --color-primary-rgb: 201, 168, 76;
+      --color-secondary: #0d1f35;
+      --color-accent: #e8c96d;
+
+      /* Neutrals */
+      --color-bg: #fafafa;
+      --color-surface: #ffffff;
+      --color-surface-2: #f4f4f5;
+      --color-border: #e4e4e7;
+      --color-border-strong: #d4d4d8;
+      --color-text: #18181b;
+      --color-text-muted: #71717a;
+      --color-text-subtle: #a1a1aa;
+
+      /* Status */
+      --color-success: #10b981;
+      --color-success-bg: #d1fae5;
+      --color-warning: #f59e0b;
+      --color-warning-bg: #fef3c7;
+      --color-error: #ef4444;
+      --color-error-bg: #fee2e2;
+      --color-info: #3b82f6;
+      --color-info-bg: #dbeafe;
+
+      /* Typography */
+      --font-sans: "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-display: "Playfair Display", Georgia, serif;
+      --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+
+      /* Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.5rem;
+      --space-6: 2rem;
+      --space-8: 3rem;
+      --space-10: 4rem;
+      --space-12: 6rem;
+
+      /* Radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 18px 40px rgba(15, 23, 42, 0.10);
+      --shadow-glow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.15);
+
+      /* Motion */
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 150ms;
+      --duration: 250ms;
+      --duration-slow: 400ms;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #09090b;
+      --color-surface: #18181b;
+      --color-surface-2: #27272a;
+      --color-border: #27272a;
+      --color-border-strong: #3f3f46;
+      --color-text: #fafafa;
+      --color-text-muted: #a1a1aa;
+      --color-text-subtle: #71717a;
+      --color-success-bg: rgba(16, 185, 129, 0.15);
+      --color-warning-bg: rgba(245, 158, 11, 0.15);
+      --color-error-bg: rgba(239, 68, 68, 0.15);
+      --color-info-bg: rgba(59, 130, 246, 0.15);
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+    }
+    img, svg { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    a { color: var(--color-primary); text-decoration: none; transition: color var(--duration-fast) var(--ease); }
+    a:hover { color: var(--color-primary-hover); }
+    code, pre { font-family: var(--font-mono); font-size: 0.875em; }
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .app {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: var(--space-6) var(--space-4);
+      background: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      overflow-y: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: 0 var(--space-2);
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      box-shadow: var(--shadow-md);
+    }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .brand-tag {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: var(--font-sans);
+      font-weight: 500;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all var(--duration-fast) var(--ease);
+    }
+    .nav-link:hover {
+      background: var(--color-surface-2);
+      color: var(--color-text);
+    }
+    .nav-link.is-active {
+      background: rgba(var(--color-primary-rgb), 0.1);
+      color: var(--color-primary);
+    }
+    .nav-link .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: var(--space-3) var(--space-2);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      transition: all var(--duration-fast) var(--ease);
+    }
+    .theme-toggle:hover {
+      color: var(--color-text);
+      border-color: var(--color-border-strong);
+    }
+
+    .main {
+      padding: var(--space-8) var(--space-10);
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .section {
+      margin-bottom: var(--space-12);
+      scroll-margin-top: var(--space-6);
+    }
+    .section-header {
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.875rem, 3vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: var(--space-2);
+    }
+    .section-desc {
+      color: var(--color-text-muted);
+      max-width: 60ch;
+      font-size: 1.05rem;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      padding: var(--space-10) var(--space-8);
+      border-radius: var(--radius-2xl);
+      background:
+        radial-gradient(ellipse at top right, rgba(var(--color-primary-rgb), 0.18), transparent 60%),
+        radial-gradient(ellipse at bottom left, rgba(var(--color-primary-rgb), 0.10), transparent 50%),
+        var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-md);
+      margin-bottom: var(--space-10);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(var(--color-primary-rgb), 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      background: rgba(var(--color-primary-rgb), 0.1);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: var(--space-4);
+      position: relative;
+    }
+    .hero-eyebrow .pulse {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.7);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(var(--color-primary-rgb), 0); }
+      100% { box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0); }
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: var(--space-4);
+      position: relative;
+    }
+    .hero-title em {
+      font-style: italic;
+      background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      max-width: 60ch;
+      margin-bottom: var(--space-6);
+      position: relative;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      position: relative;
+    }
+    .hero-meta strong { color: var(--color-text); font-weight: 600; }
+
+    /* ============================================================
+       COLOR PALETTE
+       ============================================================ */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+    .swatch {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease);
+    }
+    .swatch:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .swatch-preview {
+      height: 110px;
+      position: relative;
+    }
+    .swatch-preview::after {
+      content: "Click to copy";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      transition: opacity var(--duration-fast) var(--ease);
+    }
+    .swatch:hover .swatch-preview::after { opacity: 1; }
+    .swatch.copied .swatch-preview::after {
+      content: "Copied ✓";
+      opacity: 1;
+      background: rgba(16, 185, 129, 0.9);
+    }
+    .swatch-info { padding: var(--space-3) var(--space-4); }
+    .swatch-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+    }
+    .palette-rationale {
+      margin-top: var(--space-6);
+      padding: var(--space-5);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    .neutral-scale {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 2px;
+      margin-top: var(--space-5);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+    .neutral-step {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--color-text);
+    }
+    .neutral-step[data-dark="true"] { color: white; }
+
+    /* ============================================================
+       TYPOGRAPHY
+       ============================================================ */
+    .type-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+    .type-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-5);
+      align-items: baseline;
+      padding-bottom: var(--space-4);
+      border-bottom: 1px dashed var(--color-border);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .type-label small { display: block; opacity: 0.7; margin-top: 2px; }
+
+    .display-1 {
+      font-family: var(--font-display);
+      font-size: 3.75rem;
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    .h1 { font-family: var(--font-display); font-size: 3rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; }
+    .h2 { font-family: var(--font-display); font-size: 2.25rem; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; }
+    .h3 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.015em; }
+    .h4 { font-size: 1.375rem; font-weight: 600; line-height: 1.3; }
+    .h5 { font-size: 1.125rem; font-weight: 600; line-height: 1.4; }
+    .h6 { font-size: 1rem; font-weight: 600; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.04em; }
+    .body-text { font-size: 1rem; line-height: 1.7; color: var(--color-text); max-width: 65ch; }
+    .caption { font-size: 0.8rem; color: var(--color-text-muted); }
+    .mono { font-family: var(--font-mono); font-size: 0.9rem; background: var(--color-surface-2); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    .demo-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: var(--space-4);
+    }
+    .demo-frame { padding: var(--space-6); background: var(--color-bg); }
+    .demo-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-3) var(--space-5);
+      background: var(--color-surface-2);
+      border-top: 1px solid var(--color-border);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+    .demo-meta code { color: var(--color-primary); }
+
+    .demo-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-5);
+      background: var(--color-secondary);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xs);
+    }
+    .demo-navbar .brand {
+      padding: 0;
+    }
+    .demo-navbar-mark {
+      width: 28px; height: 28px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--color-primary), #b8963d);
+    }
+    .demo-navbar .brand-name {
+      color: white;
+      font-family: var(--font-display);
+    }
+    .demo-navbar .brand-name span { color: var(--color-primary); }
+    .demo-navbar nav {
+      display: flex;
+      gap: var(--space-1);
+    }
+    .demo-navbar nav a {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      transition: all var(--duration-fast) var(--ease);
+      position: relative;
+    }
+    .demo-navbar nav a:hover {
+      color: white;
+      background: rgba(255,255,255,0.08);
+    }
+    .demo-navbar nav a.is-active {
+      color: var(--color-primary);
+    }
+    .demo-navbar nav a.is-active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: var(--space-3);
+      right: var(--space-3);
+      height: 2px;
+      background: var(--color-primary);
+      border-radius: 2px;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      border: 1px solid transparent;
+      border-radius: 0;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease);
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .btn:disabled, .btn.is-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      box-shadow: var(--shadow-xs);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--color-accent);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:active:not(:disabled) {
+      background: var(--color-primary-active);
+      transform: translateY(0);
+    }
+    .btn-primary:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-secondary {
+      background: var(--color-secondary);
+      color: white;
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .btn-secondary:active:not(:disabled) {
+      background: #060e18;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .btn-outline:hover:not(:disabled) {
+      background: rgba(var(--color-primary-rgb), 0.08);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text);
+    }
+    .btn-ghost:hover:not(:disabled) {
+      background: var(--color-surface-2);
+    }
+
+    .btn-sm { padding: var(--space-2) var(--space-3); font-size: 0.8rem; }
+    .btn-lg { padding: var(--space-4) var(--space-6); font-size: 1rem; }
+
+    .btn-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+    .btn-row { margin-bottom: var(--space-4); }
+    .btn-row-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+      letter-spacing: 0.05em;
+    }
+
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ============================================================
+       CARDS
+       ============================================================ */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-5);
+    }
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 0;
+      overflow: hidden;
+      transition: transform var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-primary);
+    }
+    .card-image {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--color-secondary), #1a3a5c);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 30% 20%, rgba(201,168,76,0.25), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(201,168,76,0.15), transparent 50%);
+    }
+    .card-image-2 { background: linear-gradient(135deg, #1a3a5c, #0d1f35); }
+    .card-image-3 { background: linear-gradient(135deg, #0d1f35, #060e18); }
+    .card-tag {
+      position: absolute;
+      top: var(--space-3);
+      left: var(--space-3);
+      padding: var(--space-1) var(--space-2);
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      border-radius: 0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .card-body {
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      flex: 1;
+    }
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .card-desc {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      flex: 1;
+    }
+    .card-actions {
+      display: flex;
+      gap: var(--space-2);
+      align-items: center;
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--color-border);
+      margin-top: auto;
+    }
+
+    /* ============================================================
+       FORMS
+       ============================================================ */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-5);
+      background: var(--color-surface);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      border-radius: 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .field { display: flex; flex-direction: column; gap: var(--space-2); }
+    .field-full { grid-column: 1 / -1; }
+    .label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+    .label .req { color: var(--color-primary); }
+    .hint {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+    }
+    .input, .select, .textarea {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-strong);
+      border-radius: 0;
+      font-size: 0.9rem;
+      color: var(--color-text);
+      transition: border-color var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease);
+    }
+    .input::placeholder, .textarea::placeholder { color: var(--color-text-subtle); }
+    .input:hover, .select:hover, .textarea:hover { border-color: var(--color-text-subtle); }
+    .input:focus, .select:focus, .textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-glow);
+    }
+    .textarea { resize: vertical; min-height: 96px; font-family: inherit; }
+    .select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2371717a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--space-4) center;
+      padding-right: var(--space-8);
+    }
+
+    .field.is-error .input,
+    .field.is-error .select,
+    .field.is-error .textarea {
+      border-color: var(--color-error);
+    }
+    .field.is-error .input:focus { box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15); }
+    .field.is-error .hint { color: var(--color-error); }
+
+    .field.is-success .input,
+    .field.is-success .select { border-color: var(--color-success); }
+    .field.is-success .input:focus { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); }
+    .field.is-success .hint { color: var(--color-success); }
+
+    .check-row { display: flex; flex-direction: column; gap: var(--space-2); }
+    .check {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .check input[type="checkbox"], .check input[type="radio"] {
+      appearance: none;
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: 0;
+      background: var(--color-surface);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .check input[type="radio"] { border-radius: 50%; }
+    .check input:hover { border-color: var(--color-primary); }
+    .check input:checked {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .check input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 5px; top: 1px;
+      width: 5px; height: 10px;
+      border: solid var(--color-secondary);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .check input[type="radio"]:checked::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+    }
+    .check input:focus-visible { box-shadow: var(--shadow-glow); }
+
+    /* ============================================================
+       BADGES & HUD
+       ============================================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+    .badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .badge-success { background: var(--color-success-bg); color: var(--color-success); }
+    .badge-warning { background: var(--color-warning-bg); color: var(--color-warning); }
+    .badge-error { background: var(--color-error-bg); color: var(--color-error); }
+    .badge-info { background: var(--color-info-bg); color: var(--color-info); }
+    .badge-neutral { background: var(--color-surface-2); color: var(--color-text-muted); }
+    .badge-brand { background: rgba(var(--color-primary-rgb), 0.12); color: var(--color-primary); }
+
+    .hud-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .hud {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: 0;
+      border: 1px solid;
+    }
+    .hud-icon {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .hud-text strong { display: block; margin-bottom: 2px; }
+    .hud-text small { color: inherit; opacity: 0.8; font-size: 0.8rem; }
+    .hud.success { background: var(--color-success-bg); border-color: rgba(16, 185, 129, 0.3); color: var(--color-success); }
+    .hud.warning { background: var(--color-warning-bg); border-color: rgba(245, 158, 11, 0.3); color: var(--color-warning); }
+    .hud.error { background: var(--color-error-bg); border-color: rgba(239, 68, 68, 0.3); color: var(--color-error); }
+    .hud.info { background: var(--color-info-bg); border-color: rgba(59, 130, 246, 0.3); color: var(--color-info); }
+    .hud strong { color: var(--color-text); }
+    .hud .hud-icon { background: currentColor; color: white; }
+
+    .notif-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+    }
+    .icon-btn {
+      position: relative;
+      width: 40px; height: 40px;
+      display: grid;
+      place-items: center;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease);
+    }
+    .icon-btn:hover { background: var(--color-border); }
+    .notif-badge {
+      position: absolute;
+      top: -4px; right: -4px;
+      min-width: 18px; height: 18px;
+      padding: 0 5px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--color-bg);
+    }
+
+    /* ============================================================
+       FOOTER (sample, inside layout)
+       ============================================================ */
+    .demo-footer {
+      background: var(--color-secondary);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 0;
+      padding: var(--space-8) var(--space-6) var(--space-5);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: var(--space-6);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      max-width: 32ch;
+      margin-top: var(--space-3);
+    }
+    .footer-brand .brand-name { color: white; font-family: var(--font-display); }
+    .footer-brand .brand-name span { color: var(--color-primary); }
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: var(--space-3);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+    .footer-col a { color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+    .footer-col a:hover { color: var(--color-primary); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-4);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-social { display: flex; gap: var(--space-3); }
+    .footer-social a {
+      width: 32px; height: 32px;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-full);
+      color: rgba(255,255,255,0.4);
+      transition: all var(--duration-fast) var(--ease);
+    }
+    .footer-social a:hover { color: var(--color-primary); background: rgba(var(--color-primary-rgb), 0.15); }
+
+    /* ============================================================
+       PRINCIPLES
+       ============================================================ */
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-4);
+    }
+    .principle {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 0;
+      padding: var(--space-5);
+      transition: transform var(--duration) var(--ease-out), border-color var(--duration) var(--ease);
+    }
+    .principle:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-primary);
+    }
+    .principle-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 0;
+      background: rgba(var(--color-primary-rgb), 0.1);
+      color: var(--color-primary);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: var(--space-3);
+    }
+    .principle h3 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+    .principle p {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       ANIMATIONS DEMO
+       ============================================================ */
+    .anim-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+    }
+    .anim-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 0;
+      padding: var(--space-5);
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+    .anim-card h4 {
+      font-size: 0.95rem;
+      margin-bottom: var(--space-2);
+    }
+    .anim-card p {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+    }
+    .anim-shape {
+      width: 56px; height: 56px;
+      border-radius: 0;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      margin: 0 auto var(--space-3);
+      box-shadow: var(--shadow-md);
+    }
+
+    .anim-lift:hover .anim-shape { transform: translateY(-8px); transition: transform var(--duration) var(--ease-out); }
+    .anim-rotate:hover .anim-shape { transform: rotate(15deg); transition: transform var(--duration) var(--ease-out); }
+    .anim-scale:hover .anim-shape { transform: scale(1.15); transition: transform var(--duration) var(--ease-out); }
+    .anim-glow:hover .anim-shape {
+      box-shadow: 0 0 24px rgba(var(--color-primary-rgb), 0.6), var(--shadow-md);
+      transition: box-shadow var(--duration) var(--ease);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .anim-float .anim-shape { animation: float 3s ease-in-out infinite; }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .anim-shimmer .anim-shape {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* ============================================================
+       PAGE FOOTER
+       ============================================================ */
+    .page-footer {
+      margin-top: var(--space-12);
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 900px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+        padding: var(--space-3) var(--space-4);
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .nav-list { flex-direction: row; flex-shrink: 0; }
+      .nav-link { white-space: nowrap; }
+      .sidebar-footer { margin: 0; padding: 0; border: none; flex-shrink: 0; }
+      .main { padding: var(--space-5); }
+      .footer-top { grid-template-columns: 1fr; gap: var(--space-5); }
+      .demo-navbar { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+      .demo-navbar nav { flex-wrap: wrap; }
+      .footer-bottom { flex-direction: column; gap: var(--space-3); }
+      .type-row { grid-template-columns: 1fr; gap: var(--space-2); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- ========================================================
+         SIDEBAR
+         ======================================================== -->
+    <aside class="sidebar" aria-label="Section navigation">
+      <header class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <span class="brand-name">Buitrago Sánchez</span>
+          <span class="brand-tag">Design System</span>
+        </div>
+      </header>
+
+      <nav>
+        <ul class="nav-list">
+          <li><a class="nav-link is-active" href="#colors"><span class="dot"></span>Colors</a></li>
+          <li><a class="nav-link" href="#typography"><span class="dot"></span>Typography</a></li>
+          <li><a class="nav-link" href="#navbar"><span class="dot"></span>Navbar</a></li>
+          <li><a class="nav-link" href="#buttons"><span class="dot"></span>Buttons</a></li>
+          <li><a class="nav-link" href="#cards"><span class="dot"></span>Cards</a></li>
+          <li><a class="nav-link" href="#contact"><span class="dot"></span>Contacto</a></li>
+          <li><a class="nav-link" href="#hud"><span class="dot"></span>HUD &amp; Badges</a></li>
+          <li><a class="nav-link" href="#footer"><span class="dot"></span>Footer</a></li>
+          <li><a class="nav-link" href="#principles"><span class="dot"></span>Principles</a></li>
+          <li><a class="nav-link" href="#animations"><span class="dot"></span>Animations</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+          <span id="themeIcon">◐</span>
+          <span id="themeLabel">Dark</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ========================================================
+         MAIN
+         ======================================================== -->
+    <main class="main">
+      <!-- HERO -->
+      <header class="hero">
+        <div class="hero-eyebrow">
+          <span class="pulse"></span>
+          v1.0 · Living Design System
+        </div>
+        <h1 class="hero-title">Buitrago Sánchez<br /><em>Design Language</em></h1>
+        <p class="hero-desc">Consultoría Contable, Tributaria y Auditoría · Colombia</p>
+        <div class="hero-meta">
+          <span><strong>10</strong> Sections</span>
+          <span><strong>Single</strong> File</span>
+          <span><strong>WCAG AA</strong> Accessible</span>
+          <span><strong>Responsive</strong> Mobile + Desktop</span>
+        </div>
+      </header>
+
+      <!-- ========================================================
+           1. COLORS
+           ======================================================== -->
+      <section class="section" id="colors">
+        <header class="section-header">
+          <span class="section-eyebrow">01 — Foundations</span>
+          <h2 class="section-title">Color Palette</h2>
+          <p class="section-desc">A focused palette of brand, accent, and neutral tokens. Click any swatch to copy its hex value.</p>
+        </header>
+
+        <div class="swatch-grid">
+          <article class="swatch" data-copy="#c9a84c">
+            <div class="swatch-preview" style="background: #c9a84c;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Gold (Primary)</div>
+              <div class="swatch-hex">#C9A84C</div>
+            </div>
+          </article>
+          <article class="swatch" data-copy="#b8963d">
+            <div class="swatch-preview" style="background: #b8963d;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Gold Hover</div>
+              <div class="swatch-hex">#B8963D</div>
+            </div>
+          </article>
+          <article class="swatch" data-copy="#e8c96d">
+            <div class="swatch-preview" style="background: #e8c96d;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Gold Light (Accent)</div>
+              <div class="swatch-hex">#E8C96D</div>
+            </div>
+          </article>
+          <article class="swatch" data-copy="#0d1f35">
+            <div class="swatch-preview" style="background: #0d1f35;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Navy (Secondary)</div>
+              <div class="swatch-hex">#0D1F35</div>
+            </div>
+          </article>
+          <article class="swatch" data-copy="#060e18">
+            <div class="swatch-preview" style="background: #060e18;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Navy Dark</div>
+              <div class="swatch-hex">#060E18</div>
+            </div>
+          </article>
+          <article class="swatch" data-copy="#112235">
+            <div class="swatch-preview" style="background: #112235;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Navy Light</div>
+              <div class="swatch-hex">#112235</div>
+            </div>
+          </article>
+          <article class="swatch" data-copy="#10b981">
+            <div class="swatch-preview" style="background: #10b981;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Success</div>
+              <div class="swatch-hex">#10B981</div>
+            </div>
+          </article>
+          <article class="swatch" data-copy="#ef4444">
+            <div class="swatch-preview" style="background: #ef4444;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Error</div>
+              <div class="swatch-hex">#EF4444</div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="h5" style="margin: var(--space-6) 0 var(--space-3);">Neutral Scale</h3>
+        <div class="neutral-scale">
+          <div class="neutral-step" style="background:#fafafa;">50</div>
+          <div class="neutral-step" style="background:#f4f4f5;">100</div>
+          <div class="neutral-step" style="background:#e4e4e7;">200</div>
+          <div class="neutral-step" style="background:#d4d4d8;">300</div>
+          <div class="neutral-step" style="background:#a1a1aa;">400</div>
+          <div class="neutral-step" style="background:#71717a;" data-dark="true">500</div>
+          <div class="neutral-step" style="background:#52525b;" data-dark="true">600</div>
+          <div class="neutral-step" style="background:#3f3f46;" data-dark="true">700</div>
+          <div class="neutral-step" style="background:#27272a;" data-dark="true">800</div>
+          <div class="neutral-step" style="background:#18181b;" data-dark="true">900</div>
+        </div>
+
+        <p class="palette-rationale">The palette is anchored by warm gold (#C9A84C) against deep navy (#0D1F35) — a classic prestige pairing used in law, finance, and advisory across Latin America. Gold conveys authority and warmth without coldness; navy provides the gravitas expected from a firm handling sensitive financial information. Together they communicate: expert, trustworthy, and premium. The single-accent approach keeps the palette disciplined — this is a brand that doesn't need to shout.</p>
+      </section>
+
+      <!-- ========================================================
+           2. TYPOGRAPHY
+           ======================================================== -->
+      <section class="section" id="typography">
+        <header class="section-header">
+          <span class="section-eyebrow">02 — Foundations</span>
+          <h2 class="section-title">Typography</h2>
+          <p class="section-desc">A two-family system: an editorial serif for display, a humanist sans for UI, and a mono for code.</p>
+        </header>
+
+        <div class="type-stack">
+          <div class="type-row">
+            <div class="type-label">Display<small>Playfair Display · 60/64</small></div>
+            <div class="display-1">The quick brown fox</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">H1<small>Playfair Display · 48/52</small></div>
+            <div class="h1">Headlines that lead</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">H2<small>Playfair Display · 36/42</small></div>
+            <div class="h2">Section titles, focused</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">H3<small>Playfair Display · 28/34</small></div>
+            <div class="h3">Subsections that guide</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">H4<small>Open Sans · 22/28</small></div>
+            <div class="h4">Component headings</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">H5<small>Open Sans · 18/25</small></div>
+            <div class="h5">Card titles &amp; emphasis</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">H6<small>Open Sans · 16/22 · upper</small></div>
+            <div class="h6">Eyebrow Labels</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">Body<small>Open Sans · 16/27</small></div>
+            <div class="body-text">Body copy carries the story. Aim for 60–75 characters per line and 1.6–1.7 line height — that's the sweet spot for sustained reading on screens. The eye scans, drops, and returns without losing place.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">Caption<small>Open Sans · 13/19</small></div>
+            <div class="caption">Captions, hints, and metadata — quiet but present.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label">Mono<small>JetBrains Mono · 14/22</small></div>
+            <div><span class="mono">const designSystem = "single source of truth";</span></div>
+          </div>
+        </div>
+
+        <p class="palette-rationale">Playfair Display brings editorial elegance to headlines — its high-contrast strokes echo the tradition of printed financial documents and legal instruments, signaling expertise and permanence. Open Sans handles body copy and UI text with exceptional readability at small sizes, with a humanist warmth that keeps the brand approachable despite its formal tone. The serif-sans contrast creates a hierarchy that is both visually rich and functionally clear.</p>
+      </section>
+
+      <!-- ========================================================
+           3. NAVBAR
+           ======================================================== -->
+      <section class="section" id="navbar">
+        <header class="section-header">
+          <span class="section-eyebrow">03 — Navigation</span>
+          <h2 class="section-title">Navbar</h2>
+          <p class="section-desc">Transparent on hero, glazed dark on scroll. Gold underline marks the active section.</p>
+        </header>
+
+        <div class="demo-card">
+          <div class="demo-frame">
+            <div class="demo-navbar">
+              <div class="brand">
+                <div class="demo-navbar-mark"></div>
+                <span class="brand-name">Buitrago <span>Sánchez</span></span>
+              </div>
+              <nav>
+                <a href="#" class="is-active">Inicio</a>
+                <a href="#">Quiénes Somos</a>
+                <a href="#">Servicios</a>
+                <a href="#">Contacto</a>
+              </nav>
+              <div style="display:flex; gap: var(--space-2);">
+                <button class="btn btn-primary btn-sm" type="button">Contáctenos</button>
+              </div>
+            </div>
+          </div>
+          <div class="demo-meta">
+            <span>Hover items · click to set active</span>
+            <code>.demo-navbar</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           4. BUTTONS
+           ======================================================== -->
+      <section class="section" id="buttons">
+        <header class="section-header">
+          <span class="section-eyebrow">04 — Components</span>
+          <h2 class="section-title">Buttons</h2>
+          <p class="section-desc">Four variants × three sizes. Sharp corners signal professionalism. Gold CTA is the primary action driver.</p>
+        </header>
+
+        <div class="demo-card">
+          <div class="demo-frame">
+            <div class="btn-row">
+              <div class="btn-row-label">Variants</div>
+              <div class="btn-grid">
+                <button class="btn btn-primary" type="button">Solicitar asesoría</button>
+                <button class="btn btn-secondary" type="button">Conocer más</button>
+                <button class="btn btn-outline" type="button">Ver servicios</button>
+                <button class="btn btn-ghost" type="button">Cancelar</button>
+                <button class="btn btn-primary" type="button" disabled>Deshabilitado</button>
+                <button class="btn btn-primary" type="button"><span class="spinner" aria-hidden="true"></span>Enviando</button>
+              </div>
+            </div>
+            <div class="btn-row">
+              <div class="btn-row-label">Sizes</div>
+              <div class="btn-grid">
+                <button class="btn btn-primary btn-sm" type="button">Pequeño</button>
+                <button class="btn btn-primary" type="button">Normal</button>
+                <button class="btn btn-primary btn-lg" type="button">Grande</button>
+              </div>
+            </div>
+            <div class="btn-row" style="margin-bottom: 0;">
+              <div class="btn-row-label">With icons</div>
+              <div class="btn-grid">
+                <button class="btn btn-primary" type="button">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Enviar formulario
+                </button>
+                <button class="btn btn-secondary" type="button">
+                  <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3z"/></svg>
+                  WhatsApp
+                </button>
+                <button class="btn btn-outline" type="button">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                  Buscar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           5. CARDS
+           ======================================================== -->
+      <section class="section" id="cards">
+        <header class="section-header">
+          <span class="section-eyebrow">05 — Components</span>
+          <h2 class="section-title">Cards</h2>
+          <p class="section-desc">Service cards with gold left-border reveal on hover. Sharp corners, dark backgrounds, glass effect.</p>
+        </header>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-image">
+              <span class="card-tag">Destacado</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Consultoría Contable</h3>
+              <p class="card-desc">Outsourcing contable integral para PYMES. Información oportuna y precisa para la toma de decisiones estratégicas.</p>
+              <div class="card-actions">
+                <button class="btn btn-primary btn-sm" type="button">Conocer más</button>
+                <button class="btn btn-ghost btn-sm" type="button">Contactar</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image card-image-2">
+              <span class="card-tag">Servicio</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Asesoría Tributaria</h3>
+              <p class="card-desc">Planificación de renta y estrategias que optimizan su carga fiscal dentro del marco legal colombiano.</p>
+              <div class="card-actions">
+                <button class="btn btn-primary btn-sm" type="button">Ver más</button>
+                <button class="btn btn-ghost btn-sm" type="button">Contactar</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image card-image-3">
+              <span class="card-tag">Auditoría</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Revisoría Fiscal</h3>
+              <p class="card-desc">Auditoría y control fiscal independiente. Diagnóstico inicial y revisión de la situación financiera.</p>
+              <div class="card-actions">
+                <button class="btn btn-primary btn-sm" type="button">Abrir</button>
+                <button class="btn btn-ghost btn-sm" type="button">Contactar</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           6. CONTACTO — WHATSAPP
+           ======================================================== -->
+      <section class="section" id="contact">
+        <header class="section-header">
+          <span class="section-eyebrow">06 — Contacto</span>
+          <h2 class="section-title">Contacto vía WhatsApp</h2>
+          <p class="section-desc">Un solo canal de contacto. Un botón claro que abre WhatsApp directamente — sin formularios, sin fricciones.</p>
+        </header>
+
+        <!-- CTA principal -->
+        <div class="demo-card">
+          <div class="demo-frame" style="display:flex; flex-direction:column; align-items:center; gap:var(--space-6); padding: var(--space-10) var(--space-6);">
+            <div style="text-align:center; max-width:480px;">
+              <p style="font-family:var(--font-display); font-size:1.5rem; font-weight:600; color:var(--navy); letter-spacing:-0.02em; margin-bottom:var(--space-3);">
+                ¿Necesitás asesoría?
+              </p>
+              <p style="color:var(--color-text-muted); font-size:0.95rem; line-height:1.7; margin-bottom:var(--space-6);">
+                Escribinos directamente por WhatsApp. Respondemos en horario de atención: Lunes a Viernes, 8:00 am – 6:00 pm.
+              </p>
+              <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener"
+                style="display:inline-flex; align-items:center; gap:10px; background:#25D366; color:white; padding:14px 28px; border-radius:0; font-size:0.95rem; font-weight:700; letter-spacing:0.2px; transition:all 0.22s; text-decoration:none; box-shadow: 0 4px 16px rgba(37,211,102,0.3);"
+                onmouseover="this.style.background='#1ebe5d'; this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.background='#25D366'; this.style.transform='translateY(0)'">
+                <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3zm5.42 16.471c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.669.149-.198.297-.768.967-.94 1.165-.174.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.476-.884-.788-1.48-1.762-1.654-2.06-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.297.297-.495.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.917-2.207-.241-.58-.486-.501-.669-.51-.173-.009-.371-.01-.57-.01a1.09 1.09 0 0 0-.793.371c-.273.297-1.041 1.017-1.041 2.48 0 1.463 1.066 2.876 1.215 3.074.149.198 2.097 3.2 5.078 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.247-.694.247-1.288.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                Escribir por WhatsApp
+              </a>
+            </div>
+          </div>
+          <div class="demo-meta">
+            <span>CTA principal · abre wa.me en nueva pestaña</span>
+            <code>background: #25D366</code>
+          </div>
+        </div>
+
+        <!-- Variantes de botón WhatsApp -->
+        <div class="demo-card">
+          <div class="demo-frame" style="background:var(--color-secondary);">
+            <div style="margin-bottom:var(--space-3);">
+              <div class="btn-row-label" style="color:rgba(255,255,255,0.45);">Sobre fondo navy</div>
+              <div class="btn-grid">
+                <a href="#" style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:14px 24px;border-radius:0;font-size:0.9rem;font-weight:700;text-decoration:none;">
+                  <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3z"/></svg>
+                  Escribir por WhatsApp
+                </a>
+                <a href="#" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:#25D366;border:1.5px solid #25D366;padding:14px 24px;border-radius:0;font-size:0.9rem;font-weight:700;text-decoration:none;">
+                  <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3z"/></svg>
+                  WhatsApp (outline)
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="demo-meta">
+            <span>Variantes sobre superficie oscura</span>
+            <code>.btn-whatsapp · .btn-whatsapp-outline</code>
+          </div>
+        </div>
+
+        <!-- Card de contacto completa -->
+        <div class="demo-card">
+          <div class="demo-frame">
+            <div style="background:var(--color-secondary); padding:var(--space-8) var(--space-6); max-width:500px; margin:0 auto;">
+              <div style="font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--color-primary); margin-bottom:var(--space-3);">Contáctenos</div>
+              <h3 style="font-family:var(--font-display); font-size:1.75rem; font-weight:600; color:white; letter-spacing:-0.02em; line-height:1.2; margin-bottom:var(--space-3);">Hablemos de su<br>situación financiera</h3>
+              <p style="font-size:0.9rem; color:rgba(255,255,255,0.6); line-height:1.7; margin-bottom:var(--space-5);">
+                Para obtener más información o solicitar una primera consulta, escribanos directamente. La información suministrada es tratada con total confidencialidad.
+              </p>
+              <div style="display:flex; flex-direction:column; gap:var(--space-3); margin-bottom:var(--space-5); font-size:0.875rem; color:rgba(255,255,255,0.7);">
+                <div style="display:flex; align-items:center; gap:var(--space-3);">
+                  <div style="width:36px;height:36px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--color-primary);">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </div>
+                  <span>info@buitragosanchez.com</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:var(--space-3);">
+                  <div style="width:36px;height:36px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--color-primary);">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <span>Lunes a Viernes, 8:00 am – 6:00 pm</span>
+                </div>
+              </div>
+              <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener"
+                style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:14px 24px;border-radius:0;font-size:0.9rem;font-weight:700;text-decoration:none;">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3z"/></svg>
+                Escribir por WhatsApp
+              </a>
+            </div>
+          </div>
+          <div class="demo-meta">
+            <span>Sección de contacto completa — sin formulario</span>
+            <code>#contacto</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           7. HUD STATES & BADGES
+           ======================================================== -->
+      <section class="section" id="hud">
+        <header class="section-header">
+          <span class="section-eyebrow">07 — Feedback</span>
+          <h2 class="section-title">HUD States &amp; Badges</h2>
+          <p class="section-desc">Status messages, inline indicators, and notification badges. Communicate state without breaking flow.</p>
+        </header>
+
+        <h3 class="h5" style="margin-bottom: var(--space-3);">Status Messages</h3>
+        <div class="hud-grid">
+          <div class="hud success">
+            <div class="hud-icon">✓</div>
+            <div class="hud-text"><strong>Formulario enviado</strong><small>Nos comunicaremos a la brevedad.</small></div>
+          </div>
+          <div class="hud warning">
+            <div class="hud-icon">!</div>
+            <div class="hud-text"><strong>Declaración próxima</strong><small>Su obligación vence en 5 días.</small></div>
+          </div>
+          <div class="hud error">
+            <div class="hud-icon">×</div>
+            <div class="hud-text"><strong>Error en formulario</strong><small>Por favor verifique los datos.</small></div>
+          </div>
+          <div class="hud info">
+            <div class="hud-icon">i</div>
+            <div class="hud-text"><strong>Nueva normativa</strong><small>Reforma tributaria 2025 activa.</small></div>
+          </div>
+        </div>
+
+        <h3 class="h5" style="margin: var(--space-6) 0 var(--space-3);">Badges</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6);">
+          <span class="badge badge-success"><span class="dot"></span>Al día</span>
+          <span class="badge badge-warning"><span class="dot"></span>Por vencer</span>
+          <span class="badge badge-error"><span class="dot"></span>Vencido</span>
+          <span class="badge badge-info"><span class="dot"></span>En proceso</span>
+          <span class="badge badge-neutral"><span class="dot"></span>Archivado</span>
+          <span class="badge badge-brand">SAS</span>
+          <span class="badge badge-brand">Colombia</span>
+        </div>
+
+        <h3 class="h5" style="margin-bottom: var(--space-3);">Notifications</h3>
+        <div class="notif-row">
+          <button class="icon-btn" type="button" aria-label="3 notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-badge">3</span>
+          </button>
+          <button class="icon-btn" type="button" aria-label="12 messages">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="notif-badge">5</span>
+          </button>
+          <button class="icon-btn" type="button" aria-label="urgent">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="notif-badge">!</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           8. FOOTER
+           ======================================================== -->
+      <section class="section" id="footer">
+        <header class="section-header">
+          <span class="section-eyebrow">08 — Layout</span>
+          <h2 class="section-title">Footer</h2>
+          <p class="section-desc">Dark navy footer with gold brand accent. Minimal columns: brand, services, company, legal.</p>
+        </header>
+
+        <div class="demo-footer">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="brand" style="padding:0;">
+                <div class="brand-mark" style="width:32px;height:32px;"></div>
+                <span class="brand-name">Buitrago <span>Sánchez</span> &amp; Asociados</span>
+              </div>
+              <p>Consultoría Contable, Tributaria y Auditoría para empresas en Colombia.</p>
+            </div>
+            <div class="footer-col">
+              <h4>Servicios</h4>
+              <ul>
+                <li><a href="#">Consultoría Contable</a></li>
+                <li><a href="#">Asesoría Tributaria</a></li>
+                <li><a href="#">Revisoría Fiscal</a></li>
+                <li><a href="#">SG-SST</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Firma</h4>
+              <ul>
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="#">Equipo</a></li>
+                <li><a href="#">Contacto</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="#">Privacidad</a></li>
+                <li><a href="#">Tratamiento de datos</a></li>
+                <li><a href="#">NIT · Colombia</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2026 Buitrago Sánchez &amp; Asociados SAS. Todos los derechos reservados.</span>
+            <div class="footer-social">
+              <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM7.12 20H3.56V9h3.56v11zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM20.45 20h-3.56v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.32V9h3.41v1.5h.05c.48-.9 1.64-1.86 3.38-1.86 3.61 0 4.28 2.38 4.28 5.47V20z"/></svg></a>
+              <a href="#" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           9. PRINCIPLES
+           ======================================================== -->
+      <section class="section" id="principles">
+        <header class="section-header">
+          <span class="section-eyebrow">09 — Foundation</span>
+          <h2 class="section-title">Design Principles</h2>
+          <p class="section-desc">Decisions made on purpose. Each principle is a constraint that shapes every visual choice.</p>
+        </header>
+
+        <div class="principles">
+          <div class="principle">
+            <div class="principle-num">01</div>
+            <h3>Confianza primero</h3>
+            <p>Every visual decision reinforces credibility. The restrained palette, generous whitespace, and formal typeface all communicate: this is a firm you can trust with your most sensitive financial information.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">02</div>
+            <h3>Claridad sobre decoración</h3>
+            <p>Dense financial content demands tight hierarchy. Labels, eyebrows, and spatial grouping guide users to what they need. Decoration never obscures meaning — every element earns its place.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">03</div>
+            <h3>Elegancia contenida</h3>
+            <p>Two colors, two fonts, sharp corners. A focused palette reads as refined expertise rather than visual noise. We don't add more to impress — we remove until only the essential remains.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">04</div>
+            <h3>Discreción visual</h3>
+            <p>Dark backgrounds, low-opacity accents, and understated hover states mirror the confidentiality the firm promises its clients. Nothing screams — everything implies. The design reflects the brand promise.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           10. ANIMATIONS
+           ======================================================== -->
+      <section class="section" id="animations">
+        <header class="section-header">
+          <span class="section-eyebrow">10 — Motion</span>
+          <h2 class="section-title">Animations</h2>
+          <p class="section-desc">Microinteractions that confirm intent. Purposeful, respectful of <code class="mono">prefers-reduced-motion</code>.</p>
+        </header>
+
+        <div class="anim-grid">
+          <div class="anim-card anim-lift">
+            <div class="anim-shape"></div>
+            <h4>Lift</h4>
+            <p>translateY(-8px)</p>
+          </div>
+          <div class="anim-card anim-rotate">
+            <div class="anim-shape"></div>
+            <h4>Tilt</h4>
+            <p>rotate(15deg)</p>
+          </div>
+          <div class="anim-card anim-scale">
+            <div class="anim-shape"></div>
+            <h4>Scale</h4>
+            <p>scale(1.15)</p>
+          </div>
+          <div class="anim-card anim-glow">
+            <div class="anim-shape"></div>
+            <h4>Glow</h4>
+            <p>box-shadow halo</p>
+          </div>
+          <div class="anim-card anim-float">
+            <div class="anim-shape"></div>
+            <h4>Float</h4>
+            <p>infinite ease-in-out</p>
+          </div>
+          <div class="anim-card anim-shimmer">
+            <div class="anim-shape"></div>
+            <h4>Shimmer</h4>
+            <p>gradient sweep</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <p>Buitrago Sánchez Design System · Generated 2026 · Built with care.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // ============================================================
+    // Click-to-copy color swatches
+    // ============================================================
+    document.querySelectorAll(".swatch").forEach((el) => {
+      el.addEventListener("click", async () => {
+        const value = el.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(value);
+          el.classList.add("copied");
+          setTimeout(() => el.classList.remove("copied"), 1200);
+        } catch (e) {
+          console.warn("Clipboard not available", e);
+        }
+      });
+    });
+
+    // ============================================================
+    // Theme toggle
+    // ============================================================
+    const root = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+    const label = document.getElementById("themeLabel");
+    const stored = localStorage.getItem("styleguide-theme");
+    if (stored === "dark") {
+      root.setAttribute("data-theme", "dark");
+      icon.textContent = "☀";
+      label.textContent = "Light";
+    }
+    toggle.addEventListener("click", () => {
+      const isDark = root.getAttribute("data-theme") === "dark";
+      if (isDark) {
+        root.removeAttribute("data-theme");
+        icon.textContent = "◐";
+        label.textContent = "Dark";
+        localStorage.setItem("styleguide-theme", "light");
+      } else {
+        root.setAttribute("data-theme", "dark");
+        icon.textContent = "☀";
+        label.textContent = "Light";
+        localStorage.setItem("styleguide-theme", "dark");
+      }
+    });
+
+    // ============================================================
+    // Active nav link on scroll (intersection observer)
+    // ============================================================
+    const sections = document.querySelectorAll(".section");
+    const links = document.querySelectorAll(".nav-link");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach((l) => {
+              l.classList.toggle("is-active", l.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      },
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+
+    // ============================================================
+    // Demo navbar: click to set active
+    // ============================================================
+    document.querySelectorAll(".demo-navbar nav a").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelectorAll(".demo-navbar nav a").forEach((x) => x.classList.remove("is-active"));
+        a.classList.add("is-active");
+      });
+    });
+  </script>
+</body>
+</html>

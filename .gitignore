@@ -1,0 +1,17 @@
+# Archivos de Photoshop
+ps/
+*.psd
+
+# Cache local
+local_cache/
+
+# Archivos de trabajo temporales (no referenciados en el HTML)
+1b40eaa6-55f9-4e18-b940-fe2e06dc4506.png
+643f503f-7b7c-4910-a5a8-8404e32873d7.png
+b8428f1b-efad-41e8-8145-db917cb5980a.png
+gpt2.png
+videoh.png
+videoh2.png
+Firefly.png
+Untitled-4.png
+"ChatGPT Image 4 may 2026, 02_46_42 p.m..png"
