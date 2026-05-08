@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buitrago Sánchez & Asociados SAS — Consultoría Contable y Tributaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy:        #14233f;
+      --navy-2:      #1f3358;
+      --navy-dark:   #0c1729;
+      --navy-light:  #1f3358;
+      --gold:        #b48a3c;
+      --gold-light:  #c9a84c;
+      --gold-muted:  rgba(180, 138, 60, 0.15);
+      --cream:       #faf6ee;
+      --cream-2:     #f3ecdd;
+      --cream-3:     #ebe2cb;
+      --white:       #ffffff;
+      --off-white:   #faf6ee;
+      --gray-light:  #f3ecdd;
+      --gray:        #7a7a7a;
+      --ink:         #1a1a1a;
+      --ink-2:       #4a4a4a;
+      --ink-3:       #7a7a7a;
+      --text:        #1a1a1a;
+      --text-muted:  #4a4a4a;
+      --line:        rgba(20, 35, 63, 0.12);
+      --line-strong: rgba(20, 35, 63, 0.22);
+      --radius:      12px;
+      --radius-lg:   18px;
+      --shadow-sm: 0 1px 2px rgba(20,35,63,0.06), 0 2px 8px rgba(20,35,63,0.04);
+      --shadow-md: 0 4px 12px rgba(20,35,63,0.08), 0 12px 32px rgba(20,35,63,0.08);
+      --shadow-lg: 0 8px 24px rgba(20,35,63,0.10), 0 24px 64px rgba(20,35,63,0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--cream);
+    }
+
+    /* ─── NAVBAR ─────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(12, 23, 41, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: rgba(180, 138, 60, 0.1);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.3px;
+      line-height: 1.3;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-logo small {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 0.55rem 1.4rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--white);
+      font-size: 1.3rem;
+    }
+
+    /* ─── HERO ───────────────────────────────── */
+    #inicio {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.65) 100%),
+        url('logos/3d-logo.png') center top / cover no-repeat;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      will-change: background-position;
+    }
+
+    .hero-text-col {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 4rem 6rem;
+      text-align: center;
+    }
+
+    /* ─ Typographic name ─ */
+    .hero-name {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hn-line1,
+    .hn-line2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(4.5rem, 7.5vw, 9rem);
+      line-height: 1;
+      letter-spacing: -2px;
+      display: block;
+    }
+
+    .hn-line1 { color: var(--white); }
+    .hn-line2 { color: var(--gold); }
+
+    .hn-line3 {
+      display: block;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.88);
+      margin-top: 1.1rem;
+      letter-spacing: 0.5px;
+      animation: fadeSlideUp 0.7s ease both;
+      animation-delay: 1.35s;
+    }
+
+    .hn-sep-icon {
+      display: block;
+      color: var(--gold);
+      font-size: 1.25rem;
+      margin: 1.5rem 0 1.25rem;
+      animation: fadeSlideUp 0.7s ease both;
+      animation-delay: 1.6s;
+    }
+
+    .hn-tagline1,
+    .hn-tagline2 {
+      display: block;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      line-height: 2;
+    }
+
+    .hn-tagline1 {
+      animation: fadeSlideUp 0.7s ease both 1.8s, colorToWhite 0.8s ease forwards 2.5s;
+    }
+    .hn-tagline2 {
+      animation: fadeSlideUp 0.7s ease both 1.95s, colorToWhite 0.8s ease forwards 2.65s;
+    }
+
+    @keyframes colorToWhite {
+      from { color: rgba(255, 255, 255, 0.55); }
+      to   { color: rgba(255, 255, 255, 0.95); }
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.75rem;
+      animation: fadeSlideUp 0.7s ease both 2.15s;
+    }
+
+    .hero-cta {
+      background-size: cover;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 0.95rem 2.4rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+      transition: background 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 0.95rem 1.75rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .btn-whatsapp:hover,
+    .hero-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* WhatsApp en Contáctenos */
+    .contact-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 0.9rem 1.75rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.2px;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .contact-whatsapp:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .contact-whatsapp svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    .hero-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.32) 50%, transparent 65%);
+      transform: translateX(-120%);
+      animation: ctaShine 0.75s ease forwards 2.85s;
+    }
+
+    @keyframes ctaShine {
+      to { transform: translateX(220%); }
+    }
+
+    .hero-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ─ Letter & entrance animations ─ */
+    @keyframes letterIn {
+      from { opacity: 0; transform: translateY(48px); filter: blur(4px); }
+      to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .letter {
+      display: inline-block;
+      animation: letterIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .scroll-hint .arrow {
+      width: 18px;
+      height: 18px;
+      border-right: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.25);
+      transform: rotate(45deg);
+      animation: scrollBounce 2s infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50%       { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ─── SHARED SECTION STYLES ─────────────── */
+    section {
+      padding: 6rem 2rem;
+      position: sticky;
+      top: 0;
+    }
+
+    #inicio    { z-index: 1; }
+    #quienes   { z-index: 2; box-shadow: 0 -2px 20px rgba(0,0,0,0.3); }
+    #servicios { z-index: 3; box-shadow: 0 -6px 40px rgba(0,0,0,0.25); min-height: 100vh; will-change: transform; }
+    #contacto  { z-index: 4; box-shadow: 0 -6px 40px rgba(0,0,0,0.2); min-height: 100vh; will-change: transform; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-heading {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading.light {
+      color: var(--white);
+    }
+
+    .section-lead {
+      font-size: 0.975rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    .section-lead.light {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* ─── QUIÉNES SOMOS ─────────────────────── */
+    #quienes {
+      background: var(--cream-2);
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 5rem;
+    }
+
+    .about-text .section-lead {
+      max-width: 100%;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 1.75rem 0 2rem;
+      border-top: 1px solid rgba(180, 138, 60, 0.25);
+      border-bottom: 1px solid rgba(180, 138, 60, 0.25);
+    }
+
+    .about-stat-item {
+      padding: 1.5rem 1rem 1.5rem 0;
+      position: relative;
+    }
+
+    .about-stat-item + .about-stat-item {
+      padding-left: 1.5rem;
+      border-left: 1px solid rgba(180, 138, 60, 0.15);
+    }
+
+    .about-stat-number {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .about-stat-label {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 2.5rem;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      padding: 1.5rem 1.25rem 1.5rem 0;
+      border-top: 1.5px solid rgba(180, 138, 60, 0.22);
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .value-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .value-item:nth-child(odd) {
+      padding-right: 2rem;
+      border-right: 1.5px solid rgba(180, 138, 60, 0.12);
+    }
+
+    .value-item:nth-child(even) {
+      padding-left: 1.75rem;
+    }
+
+    /* Ring SVG */
+    .value-icon-wrap {
+      position: relative;
+      width: 62px;
+      height: 62px;
+      flex-shrink: 0;
+    }
+
+    .value-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .value-ring-track {
+      fill: none;
+      stroke: rgba(180, 138, 60, 0.15);
+      stroke-width: 2.5;
+    }
+
+    .value-ring-fill {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-dasharray: 163;
+      stroke-dashoffset: 163;
+      transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .value-item.visible .value-ring-fill {
+      stroke-dashoffset: 0;
+    }
+
+    .value-icon {
+      position: absolute;
+      inset: 5px;
+      background: var(--navy-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .value-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .value-text span {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* Testimonios */
+    .testimonials-slider {
+      position: relative;
+      min-height: 210px;
+      margin-top: 2rem;
+    }
+
+    .testimonial-item {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+      pointer-events: none;
+    }
+
+    .testimonial-item.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .testimonial-quote-mark {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 3.5rem;
+      color: var(--gold);
+      line-height: 0.7;
+      opacity: 0.5;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.925rem;
+      color: var(--text);
+      line-height: 1.85;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--navy-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      display: block;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--navy);
+    }
+
+    .testimonial-role {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .testimonial-dots {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.75rem;
+      align-items: center;
+    }
+
+    .testimonial-dot {
+      height: 5px;
+      width: 5px;
+      background: rgba(180, 138, 60, 0.25);
+      cursor: pointer;
+      transition: width 0.35s ease, background 0.35s ease;
+    }
+
+    .testimonial-dot.active {
+      background: var(--gold);
+      width: 22px;
+    }
+
+    /* Carousel de imagen */
+    .about-image-col {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    .about-carousel-slide.active {
+      opacity: 1;
+    }
+
+    .about-carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-carousel-dots {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.45rem;
+      z-index: 2;
+    }
+
+    .about-carousel-dot {
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.3s ease, width 0.35s ease;
+    }
+
+    .about-carousel-dot.active {
+      background: var(--gold);
+      width: 20px;
+    }
+
+    /* Animaciones de entrada para Quiénes Somos */
+    .animate-child {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-child.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ─── QUIÉNES SOMOS watermark ───────────── */
+    #quienes::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('logos/main-logo-white.png') left 70% / 40% auto no-repeat;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #quienes > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── SERVICIOS ──────────────────────────── */
+    #servicios {
+      --display: 'Fraunces', Georgia, serif;
+      position: relative;
+      overflow: hidden;
+      padding: clamp(5rem, 9vw, 8rem) 0 clamp(4rem, 6vw, 6rem);
+      background:
+        radial-gradient(ellipse 70% 50% at 80% 0%, rgba(180,138,60,0.07), transparent 60%),
+        radial-gradient(ellipse 60% 60% at 0% 100%, rgba(180,138,60,0.04), transparent 60%),
+        var(--cream);
+      color: var(--ink);
+      isolation: isolate;
+    }
+
+    #servicios .section-heading {
+      color: var(--navy);
+      font-weight: 400;
+    }
+
+    #servicios .section-heading em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    #servicios::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(20,35,63,0.04) 1px, transparent 1.5px),
+        radial-gradient(circle at 70% 70%, rgba(20,35,63,0.03) 1px, transparent 1.5px);
+      background-size: 4px 4px, 7px 7px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #servicios > .container { position: relative; z-index: 2; }
+
+    #servicios > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Marca de agua SVG decorativa */
+    #servicios .services-bg-mark {
+      position: absolute;
+      right: -180px; top: 8%;
+      width: 620px; height: 620px;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
+    }
+
+    /* ─── Reveal del contenido ───────────────── */
+    #servicios-anim {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 800ms ease, transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #servicios-anim.content-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Header ─────────────────────────────── */
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      padding-bottom: 2.25rem;
+      border-bottom: 1px solid rgba(180,138,60,0.18);
+    }
+    .services-header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .services-header-eyebrow::before {
+      content: "";
+      width: 32px; height: 1.5px;
+      background: var(--gold);
+    }
+    .services-header-right {
+      max-width: 360px;
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      line-height: 1.7;
+      text-align: right;
+    }
+    .services-header-right strong { color: var(--navy); font-weight: 500; }
+
+    @media (max-width: 768px) {
+      .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .services-header-right { text-align: left; max-width: 100%; }
+    }
+
+    /* ─── Grid asimétrico ────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .service-card                         { grid-column: span 2; }
+    .service-card.featured                { grid-column: span 3; }
+    .service-card.featured + .service-card{ grid-column: span 3; }
+    .service-card:nth-child(6)            { grid-column: span 6; min-height: auto; flex-direction: row; align-items: center; gap: 2rem; padding: 1.75rem 2.25rem; }
+
+    @media (max-width: 980px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-card,
+      .service-card.featured,
+      .service-card.featured + .service-card { grid-column: span 1 !important; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Card ───────────────────────────────── */
+    .service-card {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 2.25rem 2rem 1.75rem;
+      transition: transform 420ms cubic-bezier(0.4,0,0.2,1), border-color 320ms ease, background 320ms ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+      cursor: pointer;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(400px circle at var(--mx,50%) var(--my,0%), rgba(180,138,60,0.16), transparent 50%);
+      opacity: 0;
+      transition: opacity 320ms ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 1.75rem; bottom: 1.75rem; left: 0;
+      width: 2px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 480ms cubic-bezier(0.4,0,0.2,1);
+    }
+    .service-card:hover::after { transform: scaleY(1); }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(180,138,60,0.45);
+      background: var(--cream-2);
+      box-shadow: var(--shadow-md);
+    }
+    .service-card > * { position: relative; z-index: 1; }
+
+    .service-card.featured {
+      background: var(--white);
+      border-color: var(--line);
+      min-height: 300px;
+      padding: 2.5rem 2.25rem 2rem;
+    }
+    .service-card.featured::before {
+      background: radial-gradient(500px circle at var(--mx,50%) var(--my,0%), rgba(180,138,60,0.14), transparent 55%);
+    }
+
+    .service-card-num {
+      position: absolute;
+      top: 1.5rem; right: 1.75rem;
+      font-family: var(--display, 'Fraunces', Georgia, serif);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      opacity: 0.55;
+      transition: opacity 320ms ease;
+    }
+    .service-card:hover .service-card-num { opacity: 1; }
+
+    .service-card-icon {
+      width: 52px; height: 52px;
+      background: rgba(180,138,60,0.12);
+      border: 1px solid rgba(180,138,60,0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      transition: background 320ms ease, color 320ms ease, transform 420ms cubic-bezier(0.4,0,0.2,1), border-color 320ms ease;
+    }
+    .service-card:hover .service-card-icon {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy-dark);
+      transform: rotate(-6deg) scale(1.06);
+    }
+
+    .service-card-title {
+      font-family: var(--display, 'Fraunces', Georgia, serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .service-card.featured .service-card-title { font-size: 1.65rem; margin-bottom: 0.75rem; }
+
+    .service-card-desc {
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      line-height: 1.65;
+      margin: 0 0 1.5rem;
+    }
+
+    .service-card-link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      text-decoration: none;
+      transition: opacity 280ms ease, gap 280ms ease;
+    }
+    .service-card-link svg { width: 14px; height: 14px; transition: transform 280ms ease; }
+    .service-card:hover .service-card-link { opacity: 1; gap: 0.75rem; }
+    .service-card:hover .service-card-link svg { transform: translateX(3px); }
+
+    /* ─── Team strip ─────────────────────────── */
+    .team-strip {
+      position: relative;
+      margin-top: 2rem;
+      padding: clamp(2.25rem, 4vw, 3.25rem);
+      background: var(--cream-2);
+      border: 1px solid var(--line-strong);
+      overflow: hidden;
+    }
+    .team-strip::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(180,138,60,0.6), transparent);
+    }
+
+    .team-head {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(180,138,60,0.15);
+    }
+    .team-head-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .team-head-label::before { content: ""; width: 24px; height: 1.5px; background: var(--gold); }
+
+    .team-head-title {
+      font-family: var(--display, 'Fraunces', Georgia, serif);
+      font-size: clamp(1.4rem, 2vw, 1.85rem);
+      font-weight: 400; color: var(--navy);
+      letter-spacing: -0.01em; line-height: 1.25; margin: 0;
+    }
+    .team-head-title em { font-style: italic; color: var(--gold); font-weight: 300; }
+
+    .team-head-count { text-align: right; white-space: nowrap; }
+    .team-head-count strong {
+      display: block;
+      font-family: var(--display, 'Fraunces', Georgia, serif);
+      font-style: italic; font-size: 2.5rem; font-weight: 400;
+      color: var(--gold); line-height: 1;
+    }
+    .team-head-count span {
+      display: block; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-2); margin-top: 0.4rem;
+    }
+
+    @media (max-width: 768px) {
+      .team-head { grid-template-columns: 1fr; gap: 1rem; }
+      .team-head-count { text-align: left; }
+    }
+
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(180,138,60,0.18);
+      border: 1px solid rgba(180,138,60,0.18);
+      overflow: hidden;
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    @media (max-width: 880px) { .team-list { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .team-list { grid-template-columns: 1fr; } }
+
+    .team-item {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 1rem; align-items: center;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      transition: background 280ms ease; cursor: default;
+    }
+    .team-item:hover { background: var(--cream-3); }
+
+    .team-item-num {
+      font-family: var(--display, 'Fraunces', Georgia, serif);
+      font-style: italic; font-size: 1rem;
+      color: var(--gold); opacity: 0.7; min-width: 28px;
+    }
+    .team-item-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+    .team-item-name {
+      font-family: var(--display, 'Fraunces', Georgia, serif);
+      font-size: 1rem; font-weight: 500;
+      color: var(--navy); letter-spacing: -0.005em; line-height: 1.2;
+    }
+    .team-item-desc { font-size: 0.78rem; color: var(--ink-2); line-height: 1.4; }
+
+    .team-foot {
+      margin-top: 2rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .team-foot-text {
+      font-size: 0.875rem; color: var(--ink-2);
+      line-height: 1.6; max-width: 520px; margin: 0;
+    }
+    .team-foot-text strong { color: var(--gold); font-weight: 500; }
+    .team-foot-link {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      padding: 0.85rem 1.5rem;
+      border: 1px solid rgba(180,138,60,0.4);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      background: transparent; text-decoration: none;
+      transition: all 280ms ease; white-space: nowrap;
+    }
+    .team-foot-link:hover {
+      background: var(--gold); color: var(--navy-dark);
+      border-color: var(--gold); transform: translateY(-1px);
+    }
+    .team-foot-link svg { width: 14px; height: 14px; }
+
+    /* ─── CONTACTO / CTA ────────────────────── */
+    #contacto {
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 576px;
+      margin: 0 auto;
+    }
+
+    .cta-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-heading {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--navy);
+      margin: 0 0 1.5rem;
+    }
+
+    .cta-heading em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .cta-lead {
+      font-size: 1.05rem;
+      color: var(--ink-2);
+      line-height: 1.65;
+      max-width: 540px;
+      margin: 0 auto 2.75rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.875rem 1.75rem;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 0px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--cream);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line-strong);
+      color: var(--navy);
+    }
+
+    .btn-ghost:hover {
+      background: var(--cream-2);
+      border-color: var(--navy);
+    }
+
+    .cta-logo {
+      display: block;
+      width: 40%;
+      max-width: 00px;
+      height: auto;
+      margin: 2rem 3rem;
+    }
+
+    .cta-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: var(--ink-3);
+      font-size: 0.82rem;
+    }
+
+    #contacto {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contacto::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('logos/main-logo-white.png') center center / 880px no-repeat;
+      opacity: 0.02;
+      pointer-events: none;
+    }
+
+    .cta-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .cta-meta-item i {
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+
+    /* ─── FOOTER ─────────────────────────────── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(250, 246, 238, 0.8);
+      padding: 3rem 2rem 2rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-brand-logo img {
+      height: 28px;
+      opacity: 0.9;
+    }
+
+    .footer-brand-name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .footer-brand-name span { color: var(--gold); }
+
+    .footer-brand-tagline {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250, 246, 238, 0.45);
+      margin-top: 0.2rem;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: rgba(250, 246, 238, 0.55);
+      max-width: 300px;
+      margin: 0;
+    }
+
+    .footer-col h6 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin: 0 0 1.1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-col a {
+      font-size: 0.875rem;
+      color: rgba(250, 246, 238, 0.6);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+
+    .footer-col a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(250, 246, 238, 0.1);
+      font-size: 0.8rem;
+      color: rgba(250, 246, 238, 0.4);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 880px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(12, 23, 41, 0.98);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+        border-top: 1px solid rgba(180, 138, 60, 0.1);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      /* Hero — colapsar grid a columna única */
+      #inicio {
+        grid-template-columns: 1fr;
+        align-items: flex-end;
+      }
+
+      .hero-text-col {
+        grid-column: 1;
+        padding: 8rem 1.5rem 5rem;
+      }
+
+      .hn-line1,
+      .hn-line2 {
+        font-size: clamp(3rem, 13vw, 5.5rem);
+        letter-spacing: -1px;
+      }
+
+      /* Sections generales */
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .about-text {
+        padding: 4rem 1.5rem;
+      }
+
+      .about-image-col {
+        height: 60vw;
+        max-height: 340px;
+      }
+
+      .about-values {
+        grid-template-columns: 1fr;
+      }
+
+      .services-header {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .services-header-right {
+        text-align: left;
+        max-width: 100%;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-list {
+        grid-template-columns: 1fr;
+      }
+
+      #contacto {
+        padding: 5rem 1.5rem;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .hn-line1,
+      .hn-line2 {
+        font-size: clamp(2.5rem, 15vw, 4rem);
+      }
+
+      .hero-text-col {
+        padding: 7rem 1.25rem 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <img src="logos/main-logo-white.png" alt="Buitrago Sánchez & Asociados" style="height: 28px; margin-right: 6px; margin-top: -4px;" />
+      Buitrago <span>Sánchez</span> & Asociados
+     
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#quienes">Quiénes Somos</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Contáctenos</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio">
+
+    <!-- Columna derecha: texto (grid-column:2) -->
+    <div class="hero-text-col">
+      <div class="hero-name">
+        <span class="hn-line1">BUITRAGO</span>
+        <span class="hn-line2">SÁNCHEZ</span>
+        <span class="hn-line3">&amp; Asociados SAS</span>
+        <span class="hn-sep-icon">✦</span>
+        <span class="hn-tagline1">Asesoría, Consultoría y Auditoría</span>
+        <span class="hn-tagline2">Contable y Tributaria</span>
+      </div>
+      <div class="hero-cta-row">
+        <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener" class="btn-whatsapp">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3zm5.42 16.471c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.669.149-.198.297-.768.967-.94 1.165-.174.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.476-.884-.788-1.48-1.762-1.654-2.06-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.297.297-.495.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.917-2.207-.241-.58-.486-.501-.669-.51-.173-.009-.371-.01-.57-.01a1.09 1.09 0 0 0-.793.371c-.273.297-1.041 1.017-1.041 2.48 0 1.463 1.066 2.876 1.215 3.074.149.198 2.097 3.2 5.078 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.247-.694.247-1.288.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section id="quienes">
+    <div class="about-grid">
+
+      <!-- Columna izquierda: texto -->
+      <div class="about-text" id="about-text-anim">
+        <div class="section-eyebrow animate-child">Quiénes Somos</div>
+        <h2 class="section-heading animate-child">Una firma construida sobre<br>confianza y experiencia</h2>
+
+        <div class="about-stats animate-child">
+          <div class="about-stat-item">
+            <span class="about-stat-number" data-target="8" data-suffix=" años">0</span>
+            <span class="about-stat-label">De experiencia</span>
+          </div>
+          <div class="about-stat-item">
+            <span class="about-stat-number" data-target="420" data-prefix="+">0</span>
+            <span class="about-stat-label">Casos resueltos</span>
+          </div>
+          <div class="about-stat-item">
+            <span class="about-stat-number" data-target="360" data-prefix="+">0</span>
+            <span class="about-stat-label">Clientes atendidos</span>
+          </div>
+        </div>
+
+        <p class="section-lead animate-child">
+Constituida en 2018, Buitrago Sánchez & Asociados SAS es una firma de consultoría, asesoría y auditoría en contabilidad, tributaria y revisoría fiscal. Nos especializamos en suplir las necesidades específicas de personas naturales y jurídicas, garantizando atención personalizada y manejo confidencial de su información        </p>
+        <div class="testimonials-slider animate-child" id="testimonials">
+          <div class="testimonial-item active">
+            <span class="testimonial-quote-mark">"</span>
+            <p class="testimonial-text">Desde que contratamos a Buitrago Sánchez & Asociados, el manejo contable de nuestra empresa mejoró radicalmente. Su equipo es profesional, puntual y siempre dispuesto a explicar cada detalle.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+              <div>
+                <span class="testimonial-name">Carlos Ramírez</span>
+                <span class="testimonial-role">Gerente General · Empresa Placeholder</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <span class="testimonial-quote-mark">"</span>
+            <p class="testimonial-text">Llevamos más de cuatro años trabajando juntos. Sus soluciones tributarias nos han permitido optimizar nuestra carga fiscal de forma legal y eficiente. Totalmente recomendados.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+              <div>
+                <span class="testimonial-name">María González</span>
+                <span class="testimonial-role">Directora Financiera · Compañía Placeholder</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <span class="testimonial-quote-mark">"</span>
+            <p class="testimonial-text">Lo que más valoro es la confidencialidad y la atención personalizada. Sienten que cada caso es único, y así lo tratan. Una firma que realmente se compromete con sus clientes.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+              <div>
+                <span class="testimonial-name">Juan Martínez</span>
+                <span class="testimonial-role">Empresario · Sector Placeholder</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-dots">
+          <div class="testimonial-dot active"></div>
+          <div class="testimonial-dot"></div>
+          <div class="testimonial-dot"></div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: carousel de imágenes -->
+      <div class="about-image-col" id="about-carousel">
+        <div class="about-carousel-slide active">
+          <img src="logos/primera-seccion.png" alt="Buitrago Sánchez & Asociados" />
+        </div>
+        <div class="about-carousel-slide">
+          <img src="landing1/attorneys.png" alt="Equipo Buitrago Sánchez & Asociados" />
+        </div>
+        <div class="about-carousel-dots">
+          <div class="about-carousel-dot active"></div>
+          <div class="about-carousel-dot"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+
+    <svg class="services-bg-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="22" y="10" width="56" height="6" fill="currentColor"/>
+      <path d="M14 16 Q14 22 22 22 L78 22 Q86 22 86 16" stroke="currentColor" stroke-width="3"/>
+      <rect x="22" y="26" width="56" height="44" stroke="currentColor" stroke-width="3"/>
+      <rect x="22" y="78" width="56" height="6" fill="currentColor"/>
+    </svg>
+
+    <div class="container" id="servicios-anim">
+
+      <header class="services-header">
+        <div>
+          <span class="services-header-eyebrow">Nuestros servicios</span>
+          <h2 class="section-heading">Soluciones integrales para <em>su negocio</em>.</h2>
+        </div>
+        <p class="services-header-right">
+          Cada área cuenta con un <strong>equipo especializado</strong>. Trabajamos con la experiencia pertinente ante los problemas tributarios, contables y de gestión.
+        </p>
+      </header>
+
+      <div class="services-grid">
+
+        <article class="service-card featured" data-num="01">
+          <span class="service-card-num">— 01</span>
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="service-card-title">Consultoría Contable</h3>
+          <p class="service-card-desc">Outsourcing contable integral para PYMES. Información oportuna y precisa para la toma de decisiones estratégicas del negocio.</p>
+          <a href="#contacto" class="service-card-link">Conocer más
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card" data-num="02">
+          <span class="service-card-num">— 02</span>
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 8a2 2 0 0 1 2-2h7l5 5v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M9 13h6M9 17h4"/></svg>
+          </div>
+          <h3 class="service-card-title">Asesoría Tributaria</h3>
+          <p class="service-card-desc">Planificación de renta y estrategias que optimizan su carga fiscal dentro del marco legal.</p>
+          <a href="#contacto" class="service-card-link">Conocer más
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card" data-num="03">
+          <span class="service-card-num">— 03</span>
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3 class="service-card-title">Revisoría Fiscal</h3>
+          <p class="service-card-desc">Auditoría y control fiscal independiente. Diagnóstico inicial y revisión de la situación financiera.</p>
+          <a href="#contacto" class="service-card-link">Conocer más
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card" data-num="04">
+          <span class="service-card-num">— 04</span>
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+          </div>
+          <h3 class="service-card-title">Constitución y Liquidación</h3>
+          <p class="service-card-desc">Acompañamiento en trámites legales, registros y documentación ante las entidades competentes.</p>
+          <a href="#contacto" class="service-card-link">Conocer más
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card" data-num="05">
+          <span class="service-card-num">— 05</span>
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3 class="service-card-title">SG-SST</h3>
+          <p class="service-card-desc">Estructuración, implementación y ejecución del Sistema de Gestión de Seguridad y Salud en el Trabajo.</p>
+          <a href="#contacto" class="service-card-link">Conocer más
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card" data-num="06">
+          <span class="service-card-num">— 06</span>
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/><path d="M12 11v4M10 13h4"/></svg>
+          </div>
+          <h3 class="service-card-title">Aportes en Salud</h3>
+          <p class="service-card-desc">Administración de aportes en salud. Liquidación y pago oportuno de seguridad social en plataformas PILA.</p>
+          <a href="#contacto" class="service-card-link">Conocer más
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+      </div>
+
+      <div class="team-strip">
+        <div class="team-head">
+          <span class="team-head-label">Equipos especializados</span>
+          <h3 class="team-head-title">Personas detrás de <em>cada gestión</em>.</h3>
+          <div class="team-head-count"><strong>06</strong><span>áreas</span></div>
+        </div>
+        <ul class="team-list">
+          <li class="team-item">
+            <span class="team-item-num">01</span>
+            <div class="team-item-body">
+              <span class="team-item-name">Contadores</span>
+              <span class="team-item-desc">Pequeñas y medianas empresas</span>
+            </div>
+          </li>
+          <li class="team-item">
+            <span class="team-item-num">02</span>
+            <div class="team-item-body">
+              <span class="team-item-name">Asesores Tributarios</span>
+              <span class="team-item-desc">Planificación y proyecciones de renta</span>
+            </div>
+          </li>
+          <li class="team-item">
+            <span class="team-item-num">03</span>
+            <div class="team-item-body">
+              <span class="team-item-name">Equipo Fiscal</span>
+              <span class="team-item-desc">Revisoría fiscal y control independiente</span>
+            </div>
+          </li>
+          <li class="team-item">
+            <span class="team-item-num">04</span>
+            <div class="team-item-body">
+              <span class="team-item-name">Asesores SST</span>
+              <span class="team-item-desc">Implementación de sistemas SG-SST</span>
+            </div>
+          </li>
+          <li class="team-item">
+            <span class="team-item-num">05</span>
+            <div class="team-item-body">
+              <span class="team-item-name">Auxiliares Contables</span>
+              <span class="team-item-desc">Soporte en gestión contable diaria</span>
+            </div>
+          </li>
+          <li class="team-item">
+            <span class="team-item-num">06</span>
+            <div class="team-item-body">
+              <span class="team-item-name">Auxiliares Administrativos</span>
+              <span class="team-item-desc">Trámites y documentación</span>
+            </div>
+          </li>
+        </ul>
+        <div class="team-foot">
+          <p class="team-foot-text">Cada área respaldada por un <strong>equipo especializado</strong> que se adapta a las necesidades específicas de su negocio.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="cta-inner">
+      <span class="cta-eyebrow">— Hablemos</span>
+      <h2 class="cta-heading">Su próximo paso<br><em>empieza aquí.</em></h2>
+      <p class="cta-lead">
+        Una conversación inicial — sin compromiso — para entender en qué podemos acompañarle.
+        Respondemos en menos de 24 horas.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3zm5.42 16.471c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.669.149-.198.297-.768.967-.94 1.165-.174.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.476-.884-.788-1.48-1.762-1.654-2.06-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.297.297-.495.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.917-2.207-.241-.58-.486-.501-.669-.51-.173-.009-.371-.01-.57-.01a1.09 1.09 0 0 0-.793.371c-.273.297-1.041 1.017-1.041 2.48 0 1.463 1.066 2.876 1.215 3.074.149.198 2.097 3.2 5.078 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.247-.694.247-1.288.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <img src="logos/logo-buitrago-s.png" alt="Logo Buitrago" class="cta-logo" />
+      </div>
+      <div class="cta-meta">
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Lun – Vie, 8am – 6pm</span>
+        <span class="cta-meta-item"><i class="fas fa-map-pin"></i> Colombia</span>
+        <span class="cta-meta-item"><i class="fas fa-lock"></i> Información confidencial</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <img src="logos/main-logo-white.png" alt="Buitrago Sánchez & Asociados" />
+          <div class="footer-brand-name">
+            Buitrago <span>Sánchez</span>
+            <span class="footer-brand-tagline">&amp; Asociados SAS</span>
+          </div>
+        </div>
+        <p class="footer-brand-desc">Consultoría, asesoría y auditoría contable, tributaria y de revisoría fiscal. Más de 8 años acompañando empresas y personas naturales.</p>
+      </div>
+
+      <div class="footer-col">
+        <h6>Servicios</h6>
+        <ul>
+          <li><a href="#servicios">Consultoría Contable</a></li>
+          <li><a href="#servicios">Asesoría Tributaria</a></li>
+          <li><a href="#servicios">Revisoría Fiscal</a></li>
+          <li><a href="#servicios">Constitución y Liquidación</a></li>
+          <li><a href="#servicios">SG-SST</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Empresa</h6>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#quienes">Quiénes Somos</a></li>
+          <li><a href="#contacto">Contáctenos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Contacto</h6>
+        <ul>
+          <li><a href="mailto:info@buitragosanchez.com">info@buitragosanchez.com</a></li>
+          <li><a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a>Lun – Vie, 8am – 6pm</a></li>
+          <li><a>Colombia</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Buitrago Sánchez &amp; Asociados SAS. Todos los derechos reservados.</span>
+      <span>NIT · Colombia</span>
+    </div>
+  </footer>
+
+
+  <script>
+    // Hero letter animation
+    (function () {
+      function splitAndAnimate(selector, baseDelay, perLetterDelay) {
+        const el = document.querySelector(selector);
+        if (!el) return;
+        el.innerHTML = el.textContent.split('').map((ch, i) =>
+          ch === ' '
+            ? '<span style="display:inline-block;width:0.3em"></span>'
+            : `<span class="letter" style="animation-delay:${baseDelay + i * perLetterDelay}ms">${ch}</span>`
+        ).join('');
+      }
+
+      splitAndAnimate('.hn-line1', 0,   75);
+      splitAndAnimate('.hn-line2', 680, 75);
+    })();
+
+    // Navbar transparency on scroll
+    const navbar = document.getElementById('navbar');
+    const hero   = document.getElementById('inicio');
+
+    function updateNav() {
+      const threshold = hero ? hero.offsetHeight - 80 : 80;
+      navbar.classList.toggle('scrolled', window.scrollY > threshold);
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Parallax: hero background + section entry + servicios reveal
+    (function () {
+      const hero           = document.getElementById('inicio');
+      const sections       = ['quienes', 'servicios', 'contacto']
+        .map(id => document.getElementById(id)).filter(Boolean);
+      let ticking = false;
+
+      function tick() {
+        const scroll = window.scrollY;
+        const vh     = window.innerHeight;
+
+        // Hero background parallax
+        if (hero && scroll < vh * 1.5) {
+          hero.style.backgroundPosition = `center ${scroll * 0.3}px`;
+        }
+
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(tick); ticking = true; }
+      }, { passive: true });
+
+      tick();
+    })();
+
+    // Scroll animations — staggered children
+    (function () {
+      function observeSection(containerId, threshold) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const children = container.querySelectorAll('.animate-child');
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            children.forEach((el, i) => {
+              el.style.transitionDelay = (i * 0.12) + 's';
+              el.classList.add('visible');
+            });
+            // Stagger value-items con ring animation
+            const items = container.querySelectorAll('.value-item');
+            items.forEach((item, i) => {
+              setTimeout(() => item.classList.add('visible'), 400 + i * 180);
+            });
+            obs.disconnect();
+          });
+        }, { threshold });
+        obs.observe(container);
+      }
+
+      observeSection('about-text-anim', 0.15);
+
+      // Contador animado para los stats
+      function runCounters() {
+        document.querySelectorAll('.about-stat-number[data-target]').forEach(el => {
+          const target = +el.dataset.target;
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix || '';
+          const duration = 1400;
+          const start = performance.now();
+
+          function step(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            const value = Math.round(ease * target);
+            el.textContent = prefix + value + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+
+      // Arrancar contadores cuando el bloque de stats se vuelve visible
+      const statsObs = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        statsObs.disconnect();
+        runCounters();
+      }, { threshold: 0.5 });
+      const statsEl = document.querySelector('.about-stats');
+      if (statsEl) statsObs.observe(statsEl);
+
+      // Servicios — mostrar contenido directo (sin animación de logo)
+      const serviciosAnim = document.getElementById('servicios-anim');
+      if (serviciosAnim) serviciosAnim.classList.add('content-visible');
+    })();
+
+    // About carousel
+    (function () {
+      const slides = document.querySelectorAll('.about-carousel-slide');
+      const dots   = document.querySelectorAll('.about-carousel-dot');
+      if (!slides.length) return;
+      let current = 0;
+
+      function goTo(i) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = i;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      dots.forEach((dot, i) =>
+        dot.addEventListener('click', () => goTo(i))
+      );
+
+      setInterval(() => goTo((current + 1) % slides.length), 5000);
+    })();
+
+    // Testimonials slider
+    (function () {
+      const items = document.querySelectorAll('.testimonial-item');
+      const dots  = document.querySelectorAll('.testimonial-dot');
+      if (!items.length) return;
+      let current = 0, timer;
+
+      function goTo(i) {
+        items[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = i;
+        items[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function next() { goTo((current + 1) % items.length); }
+
+      function start() { timer = setInterval(next, 5000); }
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { clearInterval(timer); goTo(i); start(); });
+      });
+
+      start();
+    })();
+
+    // Cursor glow en service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const links  = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      toggle.querySelector('i').classList.toggle('fa-bars');
+      toggle.querySelector('i').classList.toggle('fa-xmark');
+    });
+
+    // Close nav on link click
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.querySelector('i').classList.add('fa-bars');
+        toggle.querySelector('i').classList.remove('fa-xmark');
+      });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navItems.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + entry.target.id
+              ? 'var(--gold)'
+              : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+
+  </script>
+</body>
+</html>
