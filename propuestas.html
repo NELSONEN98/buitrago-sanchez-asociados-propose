@@ -6,7 +6,7 @@
   <title>Buitrago Sánchez & Asociados SAS — Consultoría Contable y Tributaria</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     *, *::before, *::after {
@@ -16,20 +16,32 @@
     }
 
     :root {
-      --navy:        #0d1f35;
-      --navy-dark:   #060e18;
-      --navy-light:  #112235;
-      --forest:      #071a0e;
-      --forest-mid:  #0c2415;
-      --gold:        #c9a84c;
-      --gold-light:  #e8c96d;
-      --gold-muted:  rgba(201, 168, 76, 0.15);
+      --navy:        #14233f;
+      --navy-2:      #1f3358;
+      --navy-dark:   #0c1729;
+      --navy-light:  #1f3358;
+      --gold:        #b48a3c;
+      --gold-light:  #c9a84c;
+      --gold-muted:  rgba(180, 138, 60, 0.15);
+      --cream:       #faf6ee;
+      --cream-2:     #f3ecdd;
+      --cream-3:     #ebe2cb;
       --white:       #ffffff;
-      --off-white:   #f7f7f5;
-      --gray-light:  #f0f0ed;
-      --gray:        #888;
-      --text:        #2c2c2c;
-      --text-muted:  #666;
+      --off-white:   #faf6ee;
+      --gray-light:  #f3ecdd;
+      --gray:        #7a7a7a;
+      --ink:         #1a1a1a;
+      --ink-2:       #4a4a4a;
+      --ink-3:       #7a7a7a;
+      --text:        #1a1a1a;
+      --text-muted:  #4a4a4a;
+      --line:        rgba(20, 35, 63, 0.12);
+      --line-strong: rgba(20, 35, 63, 0.22);
+      --radius:      12px;
+      --radius-lg:   18px;
+      --shadow-sm: 0 1px 2px rgba(20,35,63,0.06), 0 2px 8px rgba(20,35,63,0.04);
+      --shadow-md: 0 4px 12px rgba(20,35,63,0.08), 0 12px 32px rgba(20,35,63,0.08);
+      --shadow-lg: 0 8px 24px rgba(20,35,63,0.10), 0 24px 64px rgba(20,35,63,0.12);
     }
 
     html {
@@ -38,10 +50,10 @@
     }
 
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       color: var(--text);
       line-height: 1.6;
-      background: #000;
+      background: var(--cream);
     }
 
     /* ─── NAVBAR ─────────────────────────────── */
@@ -63,16 +75,16 @@
     }
 
     nav.scrolled {
-      background: rgba(6, 14, 24, 0.95);
+      background: rgba(12, 23, 41, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom-color: rgba(201, 168, 76, 0.1);
+      border-bottom-color: rgba(180, 138, 60, 0.1);
     }
 
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: 500;
       color: var(--white);
       letter-spacing: 0.3px;
       line-height: 1.3;
@@ -84,7 +96,7 @@
 
     .nav-logo small {
       display: block;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 0.65rem;
       font-weight: 400;
       color: rgba(255, 255, 255, 0.5);
@@ -186,7 +198,7 @@
 
     .hn-line1,
     .hn-line2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: clamp(4.5rem, 7.5vw, 9rem);
       line-height: 1;
       letter-spacing: -2px;
@@ -198,7 +210,7 @@
 
     .hn-line3 {
       display: block;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: clamp(1.4rem, 2.8vw, 2.2rem);
       font-weight: 400;
       color: rgba(255, 255, 255, 0.88);
@@ -413,7 +425,7 @@
     }
 
     .section-heading {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: clamp(1.9rem, 3.2vw, 2.7rem);
       font-weight: 700;
       color: var(--navy);
@@ -438,24 +450,24 @@
 
     /* ─── QUIÉNES SOMOS ─────────────────────── */
     #quienes {
-      background: var(--off-white);
-      padding: 0;
-      min-height: 100vh;
+      background: var(--cream-2);
+      padding: 4rem 0;
+      min-height: auto;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 100vh;
+      min-height: auto;
       gap: 0;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .about-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 6rem 4rem 6rem 5rem;
+      padding: 4rem 3rem;
     }
 
     .about-text .section-lead {
@@ -467,24 +479,24 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
-      margin: 1.75rem 0 2rem;
-      border-top: 1px solid rgba(201, 168, 76, 0.25);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+      margin: 1.2rem 0 1.5rem;
+      border-top: 1px solid rgba(180, 138, 60, 0.25);
+      border-bottom: 1px solid rgba(180, 138, 60, 0.25);
     }
 
     .about-stat-item {
-      padding: 1.5rem 1rem 1.5rem 0;
+      padding: 1rem 1rem 1rem 0;
       position: relative;
     }
 
     .about-stat-item + .about-stat-item {
       padding-left: 1.5rem;
-      border-left: 1px solid rgba(201, 168, 76, 0.15);
+      border-left: 1px solid rgba(180, 138, 60, 0.15);
     }
 
     .about-stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.2rem, 3.2vw, 3.2rem);
       font-weight: 700;
       color: var(--gold);
       display: block;
@@ -501,6 +513,27 @@
       margin-top: 0.5rem;
     }
 
+    @media (max-width: 1100px) {
+      .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+      .about-stat-item {
+        padding: 1.1rem 0 1.1rem 0;
+      }
+      .about-stat-item + .about-stat-item {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(180, 138, 60, 0.15);
+        padding-top: 1.1rem;
+      }
+    }
+
     .about-values {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -513,7 +546,7 @@
       align-items: flex-start;
       gap: 1.1rem;
       padding: 1.5rem 1.25rem 1.5rem 0;
-      border-top: 1.5px solid rgba(201, 168, 76, 0.22);
+      border-top: 1.5px solid rgba(180, 138, 60, 0.22);
       opacity: 0;
       transform: translateX(40px);
       transition: opacity 0.5s ease, transform 0.5s ease;
@@ -526,7 +559,7 @@
 
     .value-item:nth-child(odd) {
       padding-right: 2rem;
-      border-right: 1.5px solid rgba(201, 168, 76, 0.12);
+      border-right: 1.5px solid rgba(180, 138, 60, 0.12);
     }
 
     .value-item:nth-child(even) {
@@ -551,7 +584,7 @@
 
     .value-ring-track {
       fill: none;
-      stroke: rgba(201, 168, 76, 0.15);
+      stroke: rgba(180, 138, 60, 0.15);
       stroke-width: 2.5;
     }
 
@@ -618,7 +651,7 @@
     }
 
     .testimonial-quote-mark {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 3.5rem;
       color: var(--gold);
       line-height: 0.7;
@@ -678,7 +711,7 @@
     .testimonial-dot {
       height: 5px;
       width: 5px;
-      background: rgba(201, 168, 76, 0.25);
+      background: rgba(180, 138, 60, 0.25);
       cursor: pointer;
       transition: width 0.35s ease, background 0.35s ease;
     }
@@ -765,20 +798,20 @@
 
     /* ─── SERVICIOS ──────────────────────────── */
     #servicios {
-      --display: 'Playfair Display', Georgia, serif;
+      --display: 'Fraunces', Georgia, serif;
       position: relative;
       overflow: hidden;
       padding: clamp(5rem, 9vw, 8rem) 0 clamp(4rem, 6vw, 6rem);
       background:
-        radial-gradient(ellipse 70% 50% at 80% 0%, rgba(201,168,76,0.1), transparent 60%),
-        radial-gradient(ellipse 60% 60% at 0% 100%, rgba(201,168,76,0.04), transparent 60%),
-        linear-gradient(168deg, #000 0%, var(--navy-dark) 50%, #0a1428 100%);
-      color: var(--white);
+        radial-gradient(ellipse 70% 50% at 80% 0%, rgba(180,138,60,0.07), transparent 60%),
+        radial-gradient(ellipse 60% 60% at 0% 100%, rgba(180,138,60,0.04), transparent 60%),
+        var(--cream);
+      color: var(--ink);
       isolation: isolate;
     }
 
     #servicios .section-heading {
-      color: rgba(255,255,255,0.72);
+      color: var(--navy);
       font-weight: 400;
     }
 
@@ -792,8 +825,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.022) 1px, transparent 1.5px),
-        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.016) 1px, transparent 1.5px);
+        radial-gradient(circle at 20% 30%, rgba(20,35,63,0.04) 1px, transparent 1.5px),
+        radial-gradient(circle at 70% 70%, rgba(20,35,63,0.03) 1px, transparent 1.5px);
       background-size: 4px 4px, 7px 7px;
       pointer-events: none;
       z-index: 0;
@@ -836,7 +869,7 @@
       gap: 3rem;
       margin-bottom: 4rem;
       padding-bottom: 2.25rem;
-      border-bottom: 1px solid rgba(201,168,76,0.18);
+      border-bottom: 1px solid rgba(180,138,60,0.18);
     }
     .services-header-eyebrow {
       display: inline-flex;
@@ -857,11 +890,11 @@
     .services-header-right {
       max-width: 360px;
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.65);
+      color: var(--ink-2);
       line-height: 1.7;
       text-align: right;
     }
-    .services-header-right strong { color: var(--white); font-weight: 500; }
+    .services-header-right strong { color: var(--navy); font-weight: 500; }
 
     @media (max-width: 768px) {
       .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -894,10 +927,8 @@
     /* ─── Card ───────────────────────────────── */
     .service-card {
       position: relative;
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(201,168,76,0.18);
+      background: var(--white);
+      border: 1px solid var(--line);
       padding: 2.25rem 2rem 1.75rem;
       transition: transform 420ms cubic-bezier(0.4,0,0.2,1), border-color 320ms ease, background 320ms ease;
       display: flex;
@@ -911,7 +942,7 @@
     .service-card::before {
       content: "";
       position: absolute; inset: 0;
-      background: radial-gradient(400px circle at var(--mx,50%) var(--my,0%), rgba(201,168,76,0.16), transparent 50%);
+      background: radial-gradient(400px circle at var(--mx,50%) var(--my,0%), rgba(180,138,60,0.16), transparent 50%);
       opacity: 0;
       transition: opacity 320ms ease;
       pointer-events: none;
@@ -933,25 +964,26 @@
 
     .service-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(201,168,76,0.45);
-      background: rgba(255,255,255,0.05);
+      border-color: rgba(180,138,60,0.45);
+      background: var(--cream-2);
+      box-shadow: var(--shadow-md);
     }
     .service-card > * { position: relative; z-index: 1; }
 
     .service-card.featured {
-      background: linear-gradient(155deg, var(--navy) 0%, var(--navy-dark) 100%);
-      border-color: rgba(201,168,76,0.3);
+      background: var(--white);
+      border-color: var(--line);
       min-height: 300px;
       padding: 2.5rem 2.25rem 2rem;
     }
     .service-card.featured::before {
-      background: radial-gradient(500px circle at var(--mx,50%) var(--my,0%), rgba(201,168,76,0.22), transparent 55%);
+      background: radial-gradient(500px circle at var(--mx,50%) var(--my,0%), rgba(180,138,60,0.14), transparent 55%);
     }
 
     .service-card-num {
       position: absolute;
       top: 1.5rem; right: 1.75rem;
-      font-family: var(--display, 'Playfair Display', serif);
+      font-family: var(--display, 'Fraunces', Georgia, serif);
       font-style: italic;
       font-size: 0.8rem;
       color: var(--gold);
@@ -963,8 +995,8 @@
 
     .service-card-icon {
       width: 52px; height: 52px;
-      background: rgba(201,168,76,0.12);
-      border: 1px solid rgba(201,168,76,0.25);
+      background: rgba(180,138,60,0.12);
+      border: 1px solid rgba(180,138,60,0.25);
       display: flex; align-items: center; justify-content: center;
       color: var(--gold);
       margin-bottom: 1.5rem;
@@ -978,10 +1010,10 @@
     }
 
     .service-card-title {
-      font-family: var(--display, 'Playfair Display', serif);
+      font-family: var(--display, 'Fraunces', Georgia, serif);
       font-size: 1.3rem;
       font-weight: 500;
-      color: var(--white);
+      color: var(--navy);
       margin: 0 0 0.6rem;
       letter-spacing: -0.01em;
       line-height: 1.25;
@@ -990,7 +1022,7 @@
 
     .service-card-desc {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
+      color: var(--ink-2);
       line-height: 1.65;
       margin: 0 0 1.5rem;
     }
@@ -1018,10 +1050,8 @@
       position: relative;
       margin-top: 2rem;
       padding: clamp(2.25rem, 4vw, 3.25rem);
-      background:
-        linear-gradient(135deg, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.02) 100%),
-        rgba(255,255,255,0.02);
-      border: 1px solid rgba(201,168,76,0.22);
+      background: var(--cream-2);
+      border: 1px solid var(--line-strong);
       overflow: hidden;
     }
     .team-strip::before {
@@ -1029,7 +1059,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.6), transparent);
+      background: linear-gradient(90deg, transparent, rgba(180,138,60,0.6), transparent);
     }
 
     .team-head {
@@ -1039,7 +1069,7 @@
       gap: 2rem;
       margin-bottom: 2.5rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(180,138,60,0.15);
     }
     .team-head-label {
       display: inline-flex; align-items: center; gap: 0.6rem;
@@ -1049,9 +1079,9 @@
     .team-head-label::before { content: ""; width: 24px; height: 1.5px; background: var(--gold); }
 
     .team-head-title {
-      font-family: var(--display, 'Playfair Display', serif);
+      font-family: var(--display, 'Fraunces', Georgia, serif);
       font-size: clamp(1.4rem, 2vw, 1.85rem);
-      font-weight: 400; color: var(--white);
+      font-weight: 400; color: var(--navy);
       letter-spacing: -0.01em; line-height: 1.25; margin: 0;
     }
     .team-head-title em { font-style: italic; color: var(--gold); font-weight: 300; }
@@ -1059,14 +1089,14 @@
     .team-head-count { text-align: right; white-space: nowrap; }
     .team-head-count strong {
       display: block;
-      font-family: var(--display, 'Playfair Display', serif);
+      font-family: var(--display, 'Fraunces', Georgia, serif);
       font-style: italic; font-size: 2.5rem; font-weight: 400;
       color: var(--gold); line-height: 1;
     }
     .team-head-count span {
       display: block; font-size: 0.72rem; font-weight: 600;
       letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(255,255,255,0.55); margin-top: 0.4rem;
+      color: var(--ink-2); margin-top: 0.4rem;
     }
 
     @media (max-width: 768px) {
@@ -1078,8 +1108,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: rgba(201,168,76,0.18);
-      border: 1px solid rgba(201,168,76,0.18);
+      background: rgba(180,138,60,0.18);
+      border: 1px solid rgba(180,138,60,0.18);
       overflow: hidden;
       list-style: none;
       margin: 0; padding: 0;
@@ -1091,23 +1121,23 @@
       display: grid; grid-template-columns: auto 1fr;
       gap: 1rem; align-items: center;
       padding: 1.25rem 1.5rem;
-      background: rgba(12,23,41,0.6);
+      background: var(--white);
       transition: background 280ms ease; cursor: default;
     }
-    .team-item:hover { background: rgba(201,168,76,0.08); }
+    .team-item:hover { background: var(--cream-3); }
 
     .team-item-num {
-      font-family: var(--display, 'Playfair Display', serif);
+      font-family: var(--display, 'Fraunces', Georgia, serif);
       font-style: italic; font-size: 1rem;
       color: var(--gold); opacity: 0.7; min-width: 28px;
     }
     .team-item-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
     .team-item-name {
-      font-family: var(--display, 'Playfair Display', serif);
+      font-family: var(--display, 'Fraunces', Georgia, serif);
       font-size: 1rem; font-weight: 500;
-      color: var(--white); letter-spacing: -0.005em; line-height: 1.2;
+      color: var(--navy); letter-spacing: -0.005em; line-height: 1.2;
     }
-    .team-item-desc { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
+    .team-item-desc { font-size: 0.78rem; color: var(--ink-2); line-height: 1.4; }
 
     .team-foot {
       margin-top: 2rem;
@@ -1115,14 +1145,14 @@
       justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
     }
     .team-foot-text {
-      font-size: 0.875rem; color: rgba(255,255,255,0.7);
+      font-size: 0.875rem; color: var(--ink-2);
       line-height: 1.6; max-width: 520px; margin: 0;
     }
     .team-foot-text strong { color: var(--gold); font-weight: 500; }
     .team-foot-link {
       display: inline-flex; align-items: center; gap: 0.65rem;
       padding: 0.85rem 1.5rem;
-      border: 1px solid rgba(201,168,76,0.4);
+      border: 1px solid rgba(180,138,60,0.4);
       font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--gold);
       background: transparent; text-decoration: none;
@@ -1134,313 +1164,294 @@
     }
     .team-foot-link svg { width: 14px; height: 14px; }
 
-    /* ─── CONTACTO ───────────────────────────── */
+    /* ─── CONTACTO / CTA ────────────────────── */
     #contacto {
-      background: linear-gradient(160deg, #050d18 0%, #020609 100%);
-      position: relative;
-      overflow: hidden;
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 576px;
+      margin: 0 auto;
+    }
+
+    .cta-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-heading {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--navy);
+      margin: 0 0 1.5rem;
+    }
+
+    .cta-heading em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .cta-lead {
+      font-size: 1.05rem;
+      color: var(--ink-2);
+      line-height: 1.65;
+      max-width: 540px;
+      margin: 0 auto 2.75rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.875rem 1.75rem;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 0px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--cream);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line-strong);
+      color: var(--navy);
+    }
+
+    .btn-ghost:hover {
+      background: var(--cream-2);
+      border-color: var(--navy);
+    }
+
+    .cta-logo {
+      display: block;
+      width: 40%;
+      max-width: 00px;
+      height: auto;
+      margin: 2rem 3rem;
+    }
+
+    .cta-meta {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10rem 2rem 10rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: var(--ink-3);
+      font-size: 0.82rem;
+    }
+
+    #contacto {
+      position: relative;
+      overflow: hidden;
     }
 
     #contacto::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('logos/main-logo.png') left 70% / 40% auto no-repeat;
-      opacity: 0.025;
+      background: url('logos/main-logo-white.png') center center / 880px no-repeat;
+      opacity: 0.02;
       pointer-events: none;
-      z-index: 0;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      max-width: 680px;
-      margin: 0 auto;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 1100px;
-    }
-
-    .contact-text .section-lead {
-      max-width: 100%;
-      margin-bottom: 2.5rem;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .contact-item-icon {
-      width: 38px;
-      height: 38px;
-      background: rgba(201, 168, 76, 0.12);
+    .cta-meta-item {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.45rem;
+    }
+
+    .cta-meta-item i {
       color: var(--gold);
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .contact-item-label {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .contact-item-value {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .contact-form-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 2.75rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.1rem;
-    }
-
-    .form-group label {
-      display: block;
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.65);
-      font-weight: 500;
-      margin-bottom: 0.45rem;
-      letter-spacing: 0.3px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--white);
-      font-size: 0.9rem;
-      font-family: 'Open Sans', sans-serif;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255, 255, 255, 0.25);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .form-group textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    .form-submit {
-      width: 100%;
-      background: var(--gold);
-      color: var(--navy-dark);
-      border: none;
-      padding: 0.95rem 1.5rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      font-family: 'Open Sans', sans-serif;
-      cursor: pointer;
-      transition: all 0.25s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      letter-spacing: 0.2px;
-      margin-top: 0.5rem;
-    }
-
-    .form-submit:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
-    }
-
-    .form-note {
-      text-align: center;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.35);
-      margin-top: 1rem;
-    }
-
-    .form-note i {
-      margin-right: 0.35rem;
-      color: var(--gold);
-    }
-
-    /* Inline field errors */
-    .field-error {
-      display: none;
-      font-size: 0.75rem;
-      color: #e07070;
-      margin-top: 0.35rem;
-      font-weight: 500;
-    }
-
-    .form-group.has-error input,
-    .form-group.has-error textarea {
-      border-color: #e07070;
-      background: rgba(224, 112, 112, 0.06);
-    }
-
-    .form-group.has-error .field-error {
-      display: block;
-    }
-
-    /* Success modal */
-    .success-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 500;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s ease;
-    }
-
-    .success-overlay.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .success-modal {
-      background: var(--navy-dark);
-      border: 1px solid rgba(201, 168, 76, 0.22);
-      padding: 3rem 2.5rem;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-      transform: translateY(24px);
-      transition: transform 0.35s ease;
-    }
-
-    .success-overlay.visible .success-modal {
-      transform: translateY(0);
-    }
-
-    .success-modal-icon {
-      font-size: 3rem;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .success-modal h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .success-modal p {
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .success-modal-close {
-      background: var(--gold);
-      color: var(--navy-dark);
-      border: none;
-      padding: 0.85rem 2.25rem;
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      cursor: pointer;
-      letter-spacing: 0.2px;
-      transition: background 0.2s;
-      display: inline-block;
-    }
-
-    .success-modal-close:hover {
-      background: var(--gold-light);
     }
 
     /* ─── FOOTER ─────────────────────────────── */
     footer {
       background: var(--navy-dark);
-      padding: 2.5rem 2rem;
-      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      color: rgba(250, 246, 238, 0.8);
+      padding: 3rem 2rem 2rem;
       position: relative;
       z-index: 5;
     }
 
-    .footer-inner {
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-brand-logo img {
+      height: 28px;
+      opacity: 0.9;
+    }
+
+    .footer-brand-name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .footer-brand-name span { color: var(--gold); }
+
+    .footer-brand-tagline {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250, 246, 238, 0.45);
+      margin-top: 0.2rem;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: rgba(250, 246, 238, 0.55);
+      max-width: 300px;
+      margin: 0;
+    }
+
+    .footer-col h6 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin: 0 0 1.1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-col a {
+      font-size: 0.875rem;
+      color: rgba(250, 246, 238, 0.6);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+
+    .footer-col a:hover { color: var(--cream); }
+
+    .footer-bottom {
       max-width: 1100px;
       margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .footer-brand span {
-      color: var(--gold);
-    }
-
-    .footer-copy {
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(250, 246, 238, 0.1);
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.35);
+      color: rgba(250, 246, 238, 0.4);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    .footer-legal {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.35);
+    @media (max-width: 880px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
     }
 
     /* ─── RESPONSIVE ─────────────────────────── */
     @media (max-width: 1024px) {
       .services-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-text-col {
+        padding: 6rem 2rem 4rem;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-text {
+        padding: 4rem 2rem;
+      }
+      .about-image-col {
+        height: 55vw;
+        max-height: 320px;
+      }
+      .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 1.25rem 0 1.5rem;
+      }
+      .about-stat-item {
+        padding: 1rem 0;
+      }
+      .about-stat-item + .about-stat-item {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(180, 138, 60, 0.15);
+        padding-top: 1rem;
+      }
+      .cta-logo {
+        width: 60%;
+        max-width: 220px;
+        margin: 1.5rem auto 0;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
       }
     }
 
@@ -1455,11 +1466,11 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--navy-dark);
+        background: rgba(12, 23, 41, 0.98);
         flex-direction: column;
         padding: 1.5rem 2rem;
         gap: 1.25rem;
-        border-top: 1px solid rgba(201, 168, 76, 0.1);
+        border-top: 1px solid rgba(180, 138, 60, 0.1);
       }
 
       .nav-links.open {
@@ -1474,6 +1485,24 @@
         display: block;
       }
 
+      /* Hero — colapsar grid a columna única */
+      #inicio {
+        grid-template-columns: 1fr;
+        align-items: flex-end;
+      }
+
+      .hero-text-col {
+        grid-column: 1;
+        padding: 8rem 1.5rem 5rem;
+      }
+
+      .hn-line1,
+      .hn-line2 {
+        font-size: clamp(3rem, 13vw, 5.5rem);
+        letter-spacing: -1px;
+      }
+
+      /* Sections generales */
       section {
         padding: 4rem 1.25rem;
       }
@@ -1492,19 +1521,46 @@
         max-height: 340px;
       }
 
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
       .about-values {
         grid-template-columns: 1fr;
       }
 
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+      .about-stat-item {
+        padding: 1rem 0;
+      }
+      .about-stat-item + .about-stat-item {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(180, 138, 60, 0.15);
+        padding-top: 1rem;
+      }
+      .cta-buttons {
+        align-items: stretch;
+      }
+      .cta-logo {
+        width: 70%;
+        max-width: 240px;
+      }
+      .cta-meta {
+        justify-content: center;
+        gap: 1rem;
+      }
+      .testimonial-item {
+        padding: 1.5rem 1rem;
+      }
+      .testimonial-text {
+        font-size: 0.95rem;
+      }
+      .testimonial-dots {
+        justify-content: center;
+      }
+
       .services-header {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
 
       .services-header-right {
@@ -1516,16 +1572,34 @@
         grid-template-columns: 1fr;
       }
 
-      .form-row {
+      .team-list {
         grid-template-columns: 1fr;
       }
 
-      .contact-form-card {
-        padding: 2rem 1.5rem;
+      #contacto {
+        padding: 5rem 1.5rem;
       }
 
-      .footer-inner {
+    }
+
+    @media (max-width: 480px) {
+      .hn-line1,
+      .hn-line2 {
+        font-size: clamp(2.5rem, 15vw, 4rem);
+      }
+
+      .hero-text-col {
+        padding: 7rem 1rem 4rem;
+      }
+      .cta-meta {
         flex-direction: column;
+        align-items: center;
+        gap: 0.9rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
         text-align: center;
       }
     }
@@ -1605,7 +1679,17 @@
         </div>
 
         <p class="section-lead animate-child">
-Constituida en 2018, Buitrago Sánchez & Asociados SAS es una firma de consultoría, asesoría y auditoría en contabilidad, tributaria y revisoría fiscal. Nos especializamos en suplir las necesidades específicas de personas naturales y jurídicas, garantizando atención personalizada y manejo confidencial de su información        </p>
+BUITRAGO SÁNCHEZ & ASOCIADOS SAS es una empresa constituida en 2018. Nuestra socia fundadora cuenta con más de 25 años de experiencia en asesoría contable y tributaria, por lo cual ha desarrollado una reputación sólida gracias a nuestro énfasis en ayudarle a usted y a su negocio. Sabemos lo que se necesita para lograr un cambio.
+        </p>
+        <p class="section-lead animate-child">
+Somos una empresa de consultoría, asesoría y auditoría en contabilidad, tributaria, revisoría fiscal, outsourcing contable, constitución y liquidación de empresas, estructuración, implementación y ejecución del SG-SST; enfocada a suplir las necesidades específicas de personas naturales y jurídicas, garantizando atención personalizada y confidencial en el manejo de la información suministrada por los clientes.
+        </p>
+        <p class="section-lead animate-child">
+Nuestro equipo se concentra en las áreas de planificación y preparación fiscal y contable, administración de aportes en salud y manejo de plataformas como PILA. Realizamos revisión, diagnóstico inicial e implementación del SG-SST.
+        </p>
+        <p class="section-lead animate-child">
+Nuestros consultores se tomarán el tiempo necesario para sentarse con usted y comentar todas sus opciones para garantizar que usted reciba una excelente asesoría.
+        </p>
         <div class="testimonials-slider animate-child" id="testimonials">
           <div class="testimonial-item active">
             <span class="testimonial-quote-mark">"</span>
@@ -1651,10 +1735,10 @@ Constituida en 2018, Buitrago Sánchez & Asociados SAS es una firma de consultor
       <!-- Columna derecha: carousel de imágenes -->
       <div class="about-image-col" id="about-carousel">
         <div class="about-carousel-slide active">
-          <img src="logos/primera-seccion.png" alt="Buitrago Sánchez & Asociados" />
+          <img src="img/primera-seccion.png" alt="Buitrago Sánchez & Asociados" />
         </div>
         <div class="about-carousel-slide">
-          <img src="landing1/attorneys.png" alt="Equipo Buitrago Sánchez & Asociados" />
+          <img src="img/attorneys.png" alt="Equipo Buitrago Sánchez & Asociados" />
         </div>
         <div class="about-carousel-dots">
           <div class="about-carousel-dot active"></div>
@@ -1823,67 +1907,87 @@ Constituida en 2018, Buitrago Sánchez & Asociados SAS es una firma de consultor
 
   <!-- CONTACTO -->
   <section id="contacto">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-text">
-          <div class="section-eyebrow" style="color: var(--gold);">Contáctenos</div>
-          <h2 class="section-heading light">Hablemos de su<br>situación financiera</h2>
-          <p class="section-lead light">
-            Para obtener más información o solicitar una primera consulta,
-            escríbanos directamente por WhatsApp. La información suministrada
-            es tratada con total confidencialidad.
-          </p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div>
-                <div class="contact-item-label">Correo electrónico</div>
-                <div class="contact-item-value">info@buitragosanchez.com</div>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fas fa-map-pin"></i>
-              </div>
-              <div>
-                <div class="contact-item-label">Ubicación</div>
-                <div class="contact-item-value">Colombia</div>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fas fa-clock"></i>
-              </div>
-              <div>
-                <div class="contact-item-label">Horario de atención</div>
-                <div class="contact-item-value">Lunes a Viernes, 8:00 am – 6:00 pm</div>
-              </div>
-            </div>
-          </div>
-          <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener" class="contact-whatsapp">
-            <svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3zm5.42 16.471c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.669.149-.198.297-.768.967-.94 1.165-.174.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.476-.884-.788-1.48-1.762-1.654-2.06-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.297.297-.495.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.917-2.207-.241-.58-.486-.501-.669-.51-.173-.009-.371-.01-.57-.01a1.09 1.09 0 0 0-.793.371c-.273.297-1.041 1.017-1.041 2.48 0 1.463 1.066 2.876 1.215 3.074.149.198 2.097 3.2 5.078 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.247-.694.247-1.288.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-            Escribir por WhatsApp
-          </a>
-        </div>
-
+    <div class="cta-inner">
+      <span class="cta-eyebrow">— Hablemos</span>
+      <h2 class="cta-heading">Su próximo paso<br><em>empieza aquí.</em></h2>
+      <p class="cta-lead">
+        Escríbenos al correo <strong>info@buitragosanchezyasociados.com</strong> o déjanos tu número de contacto y nos comunicaremos lo más pronto posible.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16"><path d="M16.003 3C9.376 3 4 8.376 4 15.003c0 2.382.7 4.61 1.9 6.487L4 29l7.717-1.86a11.95 11.95 0 0 0 4.286.79h.005c6.625 0 12.003-5.376 12.003-12.003C28.011 8.302 22.628 3 16.003 3zm5.42 16.471c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.669.149-.198.297-.768.967-.94 1.165-.174.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.476-.884-.788-1.48-1.762-1.654-2.06-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.297.297-.495.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.917-2.207-.241-.58-.486-.501-.669-.51-.173-.009-.371-.01-.57-.01a1.09 1.09 0 0 0-.793.371c-.273.297-1.041 1.017-1.041 2.48 0 1.463 1.066 2.876 1.215 3.074.149.198 2.097 3.2 5.078 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.247-.694.247-1.288.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <img src="logos/logo-buitrago-s.png" alt="Logo Buitrago" class="cta-logo" />
+      </div>
+      <div class="cta-meta">
+        <span class="cta-meta-item"><i class="fas fa-map-pin"></i> Vía Cali Jamundí - Hacienda el Castillo, Condominio Tulipanes del Castillo</span>
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Monday 8 AM - 6 PM</span>
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Tuesday 8 AM - 6 PM</span>
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Wednesday 8 AM - 6 PM</span>
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Thursday 8 AM - 6 PM</span>
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Friday 8 AM - 6 PM</span>
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Saturday Closed</span>
+        <span class="cta-meta-item"><i class="fas fa-clock"></i> Sunday Closed</span>
+        <span class="cta-meta-item"><i class="fas fa-envelope"></i> info@buitragosanchezyasociados.com</span>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
+    <div class="footer-grid">
+
       <div class="footer-brand">
-        Buitrago <span>Sánchez</span> &amp; Asociados SAS
+        <div class="footer-brand-logo">
+          <img src="logos/main-logo-white.png" alt="Buitrago Sánchez & Asociados" />
+          <div class="footer-brand-name">
+            Buitrago <span>Sánchez</span>
+            <span class="footer-brand-tagline">&amp; Asociados SAS</span>
+          </div>
+        </div>
+        <p class="footer-brand-desc">Consultoría, asesoría y auditoría contable, tributaria y de revisoría fiscal. Más de 8 años acompañando empresas y personas naturales.</p>
       </div>
-      <div class="footer-copy">
-        © 2024 Buitrago Sánchez &amp; Asociados SAS. Todos los derechos reservados.
+
+      <div class="footer-col">
+        <h6>Servicios</h6>
+        <ul>
+          <li><a href="#servicios">Consultoría Contable</a></li>
+          <li><a href="#servicios">Asesoría Tributaria</a></li>
+          <li><a href="#servicios">Revisoría Fiscal</a></li>
+          <li><a href="#servicios">Constitución y Liquidación</a></li>
+          <li><a href="#servicios">SG-SST</a></li>
+        </ul>
       </div>
-      <div class="footer-legal">
-        NIT · Colombia
+
+      <div class="footer-col">
+        <h6>Empresa</h6>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#quienes">Quiénes Somos</a></li>
+          <li><a href="#contacto">Contáctenos</a></li>
+        </ul>
       </div>
+
+      <div class="footer-col">
+        <h6>Contacto</h6>
+        <ul>
+          <li><a href="mailto:info@buitragosanchezyasociados.com">info@buitragosanchezyasociados.com</a></li>
+          <li><span>Vía Cali Jamundí - Hacienda el Castillo, Condominio Tulipanes del Castillo</span></li>
+          <li><span>Monday 8 AM - 6 PM</span></li>
+          <li><span>Tuesday 8 AM - 6 PM</span></li>
+          <li><span>Wednesday 8 AM - 6 PM</span></li>
+          <li><span>Thursday 8 AM - 6 PM</span></li>
+          <li><span>Friday 8 AM - 6 PM</span></li>
+          <li><span>Saturday Closed</span></li>
+          <li><span>Sunday Closed</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Buitrago Sánchez &amp; Asociados SAS. Todos los derechos reservados.</span>
+      <span>NIT · Colombia</span>
     </div>
   </footer>
 
